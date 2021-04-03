@@ -1,2 +1,0 @@
-(this.webpackJsonpfrontend=this.webpackJsonpfrontend||[]).push([[1],{172:function(n,t,e){"use strict";e.r(t);var c=e(1);t.default=function(){return Object(c.jsx)("h1",{children:"Contact Page"})}}}]);
-//# sourceMappingURL=ContactPageView.b07e2b35.chunk.js.map
