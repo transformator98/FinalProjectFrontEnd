@@ -1,3 +1,4 @@
+
 import AuthForm from '../component/AuthForm/index';
 
 const AuthPageView = () => {
@@ -15,6 +16,7 @@ const AuthPageView = () => {
       </div>
     </>
   );
+
 };
 
 export default AuthPageView;
