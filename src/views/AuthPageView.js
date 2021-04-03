@@ -5,6 +5,7 @@ const AuthPageView = () => {
   return (
     <>
       <div>
+        <h2>Pro Test</h2>
         <p>
           [ We will help you find weak points in knowledge so that you can
           strengthen it. We will show you what is relevant to know for a QA
