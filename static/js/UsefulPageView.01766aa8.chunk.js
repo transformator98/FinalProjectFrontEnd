@@ -1,0 +1,2 @@
+(this.webpackJsonpfrontend=this.webpackJsonpfrontend||[]).push([[4],{175:function(n,e,t){"use strict";t.r(e);var s=t(1);e.default=function(){return Object(s.jsx)("h1",{children:"Useful Page"})}}}]);
+//# sourceMappingURL=UsefulPageView.01766aa8.chunk.js.map

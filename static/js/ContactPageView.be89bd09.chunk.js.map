@@ -1,0 +1,1 @@
+{"version":3,"sources":["views/ContactPageView.js"],"names":["NotFoundView"],"mappings":"wHAIeA,UAJM,WACnB,OAAO","file":"static/js/ContactPageView.be89bd09.chunk.js","sourcesContent":["const NotFoundView = () => {\r\n  return <h1>Contact Page</h1>;\r\n};\r\n\r\nexport default NotFoundView;\r\n"],"sourceRoot":""}

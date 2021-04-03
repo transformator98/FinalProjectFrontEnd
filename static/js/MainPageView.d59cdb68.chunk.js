@@ -1,0 +1,2 @@
+(this.webpackJsonpfrontend=this.webpackJsonpfrontend||[]).push([[2],{174:function(n,t,e){"use strict";e.r(t);var r=e(1);t.default=function(){return Object(r.jsx)("h1",{children:"Main Page"})}}}]);
+//# sourceMappingURL=MainPageView.d59cdb68.chunk.js.map
