@@ -1,0 +1,1 @@
+{"version":3,"sources":["views/AuthPageView.js"],"names":["AuthPageView"],"mappings":"wHAIeA,UAJM,WACnB,OAAO","file":"static/js/AuthPageView.3ea30585.chunk.js","sourcesContent":["const AuthPageView = () => {\r\n  return <h1>Auth Page</h1>;\r\n};\r\n\r\nexport default AuthPageView;\r\n"],"sourceRoot":""}

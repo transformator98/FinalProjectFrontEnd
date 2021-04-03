@@ -1,20 +1,20 @@
 {
   "files": {
-    "AuthPageView.js": "/FinalProjectFrontEnd/static/js/AuthPageView.b1c8f65b.chunk.js",
-    "AuthPageView.js.map": "/FinalProjectFrontEnd/static/js/AuthPageView.b1c8f65b.chunk.js.map",
-    "ContactPageView.js": "/FinalProjectFrontEnd/static/js/ContactPageView.be89bd09.chunk.js",
-    "ContactPageView.js.map": "/FinalProjectFrontEnd/static/js/ContactPageView.be89bd09.chunk.js.map",
-    "MainPageView.js": "/FinalProjectFrontEnd/static/js/MainPageView.d59cdb68.chunk.js",
-    "MainPageView.js.map": "/FinalProjectFrontEnd/static/js/MainPageView.d59cdb68.chunk.js.map",
-    "NotFoundView.js": "/FinalProjectFrontEnd/static/js/NotFoundView.c30af6cb.chunk.js",
-    "NotFoundView.js.map": "/FinalProjectFrontEnd/static/js/NotFoundView.c30af6cb.chunk.js.map",
-    "UsefulPageView.js": "/FinalProjectFrontEnd/static/js/UsefulPageView.01766aa8.chunk.js",
-    "UsefulPageView.js.map": "/FinalProjectFrontEnd/static/js/UsefulPageView.01766aa8.chunk.js.map",
+    "AuthPageView.js": "/FinalProjectFrontEnd/static/js/AuthPageView.3ea30585.chunk.js",
+    "AuthPageView.js.map": "/FinalProjectFrontEnd/static/js/AuthPageView.3ea30585.chunk.js.map",
+    "ContactPageView.js": "/FinalProjectFrontEnd/static/js/ContactPageView.b07e2b35.chunk.js",
+    "ContactPageView.js.map": "/FinalProjectFrontEnd/static/js/ContactPageView.b07e2b35.chunk.js.map",
+    "MainPageView.js": "/FinalProjectFrontEnd/static/js/MainPageView.4dc60978.chunk.js",
+    "MainPageView.js.map": "/FinalProjectFrontEnd/static/js/MainPageView.4dc60978.chunk.js.map",
+    "NotFoundView.js": "/FinalProjectFrontEnd/static/js/NotFoundView.1b82f97d.chunk.js",
+    "NotFoundView.js.map": "/FinalProjectFrontEnd/static/js/NotFoundView.1b82f97d.chunk.js.map",
+    "UsefulPageView.js": "/FinalProjectFrontEnd/static/js/UsefulPageView.bb4b1d74.chunk.js",
+    "UsefulPageView.js.map": "/FinalProjectFrontEnd/static/js/UsefulPageView.bb4b1d74.chunk.js.map",
     "main.css": "/FinalProjectFrontEnd/static/css/main.290435b6.chunk.css",
-    "main.js": "/FinalProjectFrontEnd/static/js/main.70307c7c.chunk.js",
-    "main.js.map": "/FinalProjectFrontEnd/static/js/main.70307c7c.chunk.js.map",
-    "runtime-main.js": "/FinalProjectFrontEnd/static/js/runtime-main.582e676b.js",
-    "runtime-main.js.map": "/FinalProjectFrontEnd/static/js/runtime-main.582e676b.js.map",
+    "main.js": "/FinalProjectFrontEnd/static/js/main.5d13e715.chunk.js",
+    "main.js.map": "/FinalProjectFrontEnd/static/js/main.5d13e715.chunk.js.map",
+    "runtime-main.js": "/FinalProjectFrontEnd/static/js/runtime-main.22e0f5e4.js",
+    "runtime-main.js.map": "/FinalProjectFrontEnd/static/js/runtime-main.22e0f5e4.js.map",
     "static/css/7.3cb7e98f.chunk.css": "/FinalProjectFrontEnd/static/css/7.3cb7e98f.chunk.css",
     "static/js/7.eb6b68b2.chunk.js": "/FinalProjectFrontEnd/static/js/7.eb6b68b2.chunk.js",
     "static/js/7.eb6b68b2.chunk.js.map": "/FinalProjectFrontEnd/static/js/7.eb6b68b2.chunk.js.map",
@@ -24,10 +24,10 @@
     "static/js/7.eb6b68b2.chunk.js.LICENSE.txt": "/FinalProjectFrontEnd/static/js/7.eb6b68b2.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.582e676b.js",
+    "static/js/runtime-main.22e0f5e4.js",
     "static/css/7.3cb7e98f.chunk.css",
     "static/js/7.eb6b68b2.chunk.js",
     "static/css/main.290435b6.chunk.css",
-    "static/js/main.70307c7c.chunk.js"
+    "static/js/main.5d13e715.chunk.js"
   ]
 }
