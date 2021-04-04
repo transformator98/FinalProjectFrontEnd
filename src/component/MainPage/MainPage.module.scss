@@ -17,11 +17,13 @@
 }
 .textBr {
   display: block;
+
 }
 .author {
   font-weight: 500;
   font-size: 1.2em;
   line-height: 1.4em;
+
   text-align: center;
   @media (min-width: 768px) {
     font-size: 1.8em;
@@ -64,7 +66,6 @@
   padding: 40px 0;
   margin: 0 auto;
   cursor: pointer;
-
   @media (min-width: 768px) {
     width: 400px;
   }
@@ -73,6 +74,7 @@
 .container:focus {
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
 }
+
 
 .oneContainer {
   background-color: #02172a;

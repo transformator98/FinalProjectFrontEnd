@@ -4,6 +4,7 @@ const MainPage = () => {
   return (
     <main className={s.main}>
       <h2 className={s.quote}>
+
         "Regression testing. What is it?
         <span className={s.textBr}>
           If the system compiles, that's good, if it boots,that's great!"
@@ -62,6 +63,7 @@ const MainPage = () => {
           </button>
         </div>
       </section>
+
     </main>
   );
 };
