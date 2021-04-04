@@ -1,2 +1,0 @@
-(this.webpackJsonpfrontend=this.webpackJsonpfrontend||[]).push([[0],{175:function(n,t,e){"use strict";e.r(t);var r=e(1);t.default=function(){return Object(r.jsx)("h1",{children:"Auth Page"})}}}]);
-//# sourceMappingURL=AuthPageView.81bea0c7.chunk.js.map

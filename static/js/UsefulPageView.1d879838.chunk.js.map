@@ -1,0 +1,1 @@
+{"version":3,"sources":["views/UsefulPageView.js"],"names":["UserPageView"],"mappings":"wHAIeA,UAJM,WACnB,OAAO","file":"static/js/UsefulPageView.1d879838.chunk.js","sourcesContent":["const UserPageView = () => {\r\n  return <h1>Useful Page</h1>;\r\n};\r\n\r\nexport default UserPageView;\r\n"],"sourceRoot":""}
