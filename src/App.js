@@ -15,21 +15,21 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import('typeface-montserrat');
 
-const ContactPageView = lazy(() =>
-  import('views/ContactPageView' /* webpackChunkName: "ContactPageView" */),
-);
-const AuthPageView = lazy(() =>
-  import('views/AuthPageView/AuthPageView' /*AuthPageViewChunkName: "AuthPageView" */),
-);
-const MainPageView = lazy(() =>
-  import('views/MainPageView' /* webpackChunkName: "MainPageView" */),
-);
-const UsefulPageView = lazy(() =>
-  import('views/UsefulPageView' /* webpackChunkName: "UsefulPageView" */),
-);
-const NotFoundView = lazy(() =>
-  import('views/NotFoundView' /* webpackChunkName: "NotFoundView" */),
-);
+// const ContactPageView = lazy(() =>
+//   import('views/ContactPageView' /* webpackChunkName: "ContactPageView" */),
+// );
+// const AuthPageView = lazy(() =>
+//   import('views/AuthPageView/AuthPageView' /*AuthPageViewChunkName: "AuthPageView" */),
+// );
+// const MainPageView = lazy(() =>
+//   import('views/MainPageView' /* webpackChunkName: "MainPageView" */),
+// );
+// const UsefulPageView = lazy(() =>
+//   import('views/UsefulPageView' /* webpackChunkName: "UsefulPageView" */),
+// );
+// const NotFoundView = lazy(() =>
+//   import('views/NotFoundView' /* webpackChunkName: "NotFoundView" */),
+// );
 
 export default function App() {
   return (
@@ -38,23 +38,23 @@ export default function App() {
       <Suspense fallback={<Loader />}>
         {/* <Switch> */}
         {/* <PublicRoute path="/contacts"> */}
-        <ContactPageView />
+        {/* <ContactPageView /> */}
         {/* </PublicRoute> */}
 
         {/* <PublicRoute path="/auth"> */}
-        <AuthPageView />
+        {/* <AuthPageView /> */}
         {/* </PublicRoute> */}
 
         {/* <PrivateRoute path="/" exact> */}
-        <MainPageView />
+        {/* <MainPageView /> */}
         {/* </PrivateRoute> */}
 
         {/* <PrivateRoute path="/useful-info"> */}
-        <UsefulPageView />
+        {/* <UsefulPageView /> */}
         {/* </PrivateRoute> */}
 
         {/* <PublicRoute> */}
-        <NotFoundView />
+        {/* <NotFoundView /> */}
         {/* </PublicRoute> */}
         {/* </Switch> */}
       </Suspense>
