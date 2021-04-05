@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Button from '../Button';
 import Modal from '../Modal';
-import PublicNavItem from '../PublicNavItem';
+// import PublicNavItem from '../PublicNavItem';
 import UserMenu from '../UserMenu';
 import { ReactComponent as MobileMenuBtn } from './mobile-menu-btn.svg';
 import { ReactComponent as CloseModalBtn } from './close-modal-btn.svg';
@@ -32,10 +32,10 @@ const Header = ({ children }) => {
         )}
         {isOpenModal && (
           <Modal>
-            <PublicNavItem
+            {/* <PublicNavItem
               modalStatus={isOpenModal}
               onModalClose={onToggleModal}
-            />
+            /> */}
             <UserMenu modalStatus={isOpenModal} onModalClose={onToggleModal} />
           </Modal>
         )}
