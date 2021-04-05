@@ -1,10 +1,10 @@
 import { NavLink } from 'react-router-dom';
 import './PublicNavItem.scss';
 
-const PublicNavItem = () => {
+const PublicNavItem = ({ onModalClose }) => {
   return (
-    <ul className="list">
-      <li className="nav-list__item">
+    <ul className="list public-nav-list">
+      <li className="nav-list__item" onClick={onModalClose}>
         <NavLink
           to="contacts"
           className="nav-list__item-link"

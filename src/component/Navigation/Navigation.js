@@ -1,5 +1,5 @@
 import Logo from '../Logo';
-import PublicNavItem from '../PublicNavItem';
+// import PublicNavItem from '../PublicNavItem';
 import UserMenu from '../UserMenu';
 import './Navigation.scss';
 
@@ -9,7 +9,7 @@ const Navigation = () => {
       <Logo />
       <div className="is-visible">
         <UserMenu />
-        <PublicNavItem />
+        {/* <PublicNavItem /> */}
       </div>
     </nav>
   );

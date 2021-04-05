@@ -20,9 +20,9 @@
   flex-direction: column;
 
   @media screen and (min-width: 768px) {
+    width: 319px;
     flex-direction: row;
-    justify-content: space-between;
-    width: 266px;
+    justify-content: flex-start;
   }
 
   @media screen and (min-width: 1280px) {
@@ -35,9 +35,14 @@
     margin: 0 auto;
     border-bottom: 1px solid rgb(226, 227, 229);
 
+    @media screen and (min-width: 768px) {
+      width: 70px;
+      padding: 0;
+      border-bottom: none;
+    }
+
     &-link {
       display: block;
-
       margin: 0 auto;
       width: 70px;
       text-align: center;
@@ -47,10 +52,6 @@
       line-height: 18px;
       color: rgba(0, 0, 0, 1);
       border-bottom: 1px solid rgb(245, 246, 251);
-    }
-
-    @media screen and (min-width: 768px) {
-      width: 144px;
     }
   }
 }
@@ -69,7 +70,7 @@
 
   @media screen and (min-width: 768px) {
     margin: 0;
-    width: 144px;
+    width: 70px;
   }
 }
 

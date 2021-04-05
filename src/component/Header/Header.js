@@ -9,7 +9,7 @@ import './Header.scss';
 
 const Header = ({ children }) => {
   const [isOpenModal, setIsOpenModal] = useState(false);
-  const toggleModal = () => {
+  const onToggleModal = () => {
     setIsOpenModal(!isOpenModal);
   };
 
@@ -21,19 +21,22 @@ const Header = ({ children }) => {
           <Button
             className="site-header__button"
             children={<MobileMenuBtn />}
-            onClick={toggleModal}
+            onClick={onToggleModal}
           />
         ) : (
           <Button
             className="site-header__button"
             children={<CloseModalBtn />}
-            onClick={toggleModal}
+            onClick={onToggleModal}
           />
         )}
         {isOpenModal && (
           <Modal>
-            <PublicNavItem />
-            <UserMenu />
+            <PublicNavItem
+              modalStatus={isOpenModal}
+              onModalClose={onToggleModal}
+            />
+            <UserMenu modalStatus={isOpenModal} onModalClose={onToggleModal} />
           </Modal>
         )}
       </header>

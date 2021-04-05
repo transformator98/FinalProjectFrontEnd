@@ -1,10 +1,10 @@
 import { NavLink } from 'react-router-dom';
 import './UserMenu.scss';
 
-const UserMenu = () => {
+const UserMenu = ({ onModalClose }) => {
   return (
     <ul className="list nav-list">
-      <li className="nav-list__item">
+      <li className="nav-list__item" onClick={onModalClose}>
         <NavLink
           exact
           to="/"
@@ -14,7 +14,7 @@ const UserMenu = () => {
           Home
         </NavLink>
       </li>
-      <li className="nav-list__item">
+      <li className="nav-list__item" onClick={onModalClose}>
         <NavLink
           to="/useful-info"
           className="nav-list__item-link"
@@ -23,7 +23,7 @@ const UserMenu = () => {
           Materials
         </NavLink>
       </li>
-      <li className="nav-list__item">
+      <li className="nav-list__item" onClick={onModalClose}>
         <NavLink
           to="/contacts"
           className="nav-list__item-link"
