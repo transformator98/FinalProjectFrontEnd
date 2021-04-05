@@ -16,7 +16,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import('typeface-montserrat');
 
 const ContactPageView = lazy(() =>
-  import('views/ContactPageView' /* webpackChunkName: "ContactPageView" */),
+  import(
+    'views/ContactPageView/ContactPageView' /* webpackChunkName: "ContactPageView" */
+  ),
 );
 const AuthPageView = lazy(() =>
   import(
