@@ -4,28 +4,34 @@ import './UserMenu.scss';
 const UserMenu = () => {
   return (
     <ul className="list nav-list">
-      <NavLink
-        exact
-        to="/"
-        className="nav-list-item"
-        activeClassName="active-nav-list-item"
-      >
-        Home
-      </NavLink>
-      <NavLink
-        to="/useful-info"
-        className="nav-list-item"
-        activeClassName="active-nav-list-item"
-      >
-        Materials
-      </NavLink>
-      <NavLink
-        to="/contacts"
-        className="nav-list-item"
-        activeClassName="active-nav-list-item"
-      >
-        Contacts
-      </NavLink>
+      <li className="nav-list__item">
+        <NavLink
+          exact
+          to="/"
+          className="nav-list__item-link"
+          activeClassName="active-nav-list__item-link"
+        >
+          Home
+        </NavLink>
+      </li>
+      <li className="nav-list__item">
+        <NavLink
+          to="/useful-info"
+          className="nav-list__item-link"
+          activeClassName="active-nav-list__item-link"
+        >
+          Materials
+        </NavLink>
+      </li>
+      <li className="nav-list__item">
+        <NavLink
+          to="/contacts"
+          className="nav-list__item-link"
+          activeClassName="active-nav-list__item-link"
+        >
+          Contacts
+        </NavLink>
+      </li>
     </ul>
   );
 };

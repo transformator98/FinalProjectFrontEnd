@@ -7,8 +7,10 @@ const Navigation = () => {
   return (
     <nav className="site-navigation">
       <Logo />
-      <UserMenu />
-      <PublicNavItem />
+      <div className="is-visible">
+        <UserMenu />
+        <PublicNavItem />
+      </div>
     </nav>
   );
 };
