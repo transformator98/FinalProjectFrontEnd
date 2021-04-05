@@ -13,12 +13,6 @@ export default function AuthForm() {
         Or login to our app using e-mail and password
       </h2>
       <input
-        type="text"
-        name="name"
-        placeholder="Name"
-        className={styles.input}
-      />
-      <input
         type="email"
         name="email"
         placeholder="E-mail"
