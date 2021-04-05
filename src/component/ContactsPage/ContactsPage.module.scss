@@ -13,7 +13,7 @@
     margin-left: auto;
     margin-right: auto;
     text-align: center;
-    width: 130px;
+    width: 40%;
     margin-top: 40px;
     margin-bottom: 20px;
     font-family: Montserrat;
@@ -33,10 +33,47 @@
 
 .listItem {
     margin-bottom: 20px;
+        background-color: grey;
 }
 
-.CARD {
+.listItem {
     width: 280px;
     height: 370px;
-    background-color: red;
 }
+
+    @media (min-width: 768px) {
+        .list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .title {
+            font-size: 22px;
+        }
+
+        .listItem {
+            width: 352px;
+        }
+    }
+
+    @media (min-width: 1024px) {
+
+        .list {
+            justify-content: left;
+        }
+
+        .title {
+            width: 25%;
+        }
+
+        .listItem:not(:nth-of-type(4n)) {
+            margin-right: 10px;
+        }
+
+        .listItem {
+             width: 230px;
+        }
+    }
+
+

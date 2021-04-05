@@ -1,5 +1,6 @@
 import styles from './ContactsPage.module.scss';
 import contacts from '../../team/team.json';
+import { v4 as uuidv4 } from 'uuid';
 
 const ContactPageView = () => {
   return (
@@ -9,7 +10,7 @@ const ContactPageView = () => {
         <ul className={styles.list}>
           {contacts.map(el => {
             return (
-              <li className={styles.listItem}>
+              <li key={uuidv4()} className={styles.listItem}>
                 <div className={styles.CARD}>{el.name}</div>
               </li>
             );
