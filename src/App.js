@@ -10,7 +10,7 @@ import Loader from 'component/Loader';
 // import PrivateRoute from 'component/PrivateRoute';
 // import PublicRoute from 'component/PublicRoute';
 
-import Diagram from 'component/Diagram'; // !!!TEMPORARY ADDED
+import Result from 'component/Results'; // !!!TEMPORARY ADDED
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import('typeface-montserrat');
@@ -60,7 +60,7 @@ export default function App() {
         {/* </PublicRoute> */}
         {/* </Switch> */}
       </Suspense>
-      <Diagram />
+      <Result />
       <ToastContainer
         position="top-right"
         autoClose={3000}
