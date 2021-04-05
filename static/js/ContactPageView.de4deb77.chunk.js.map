@@ -1,0 +1,1 @@
+{"version":3,"sources":["views/ContactPageView.js"],"names":["ContactPageView"],"mappings":"wHAIeA,UAJS,WACtB,OAAO","file":"static/js/ContactPageView.de4deb77.chunk.js","sourcesContent":["const ContactPageView = () => {\n  return <h1>Contact Page</h1>;\n};\n\nexport default ContactPageView;\n"],"sourceRoot":""}

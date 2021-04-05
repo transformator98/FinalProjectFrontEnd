@@ -1,2 +1,0 @@
-(this.webpackJsonpfrontend=this.webpackJsonpfrontend||[]).push([[2],{189:function(n,t,e){"use strict";e.r(t);var r=e(1);t.default=function(){return Object(r.jsx)("h1",{children:"404 \u0421\u0442\u0440\u0430\u043d\u0438\u0446\u0430 \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u0430 "})}}}]);
-//# sourceMappingURL=NotFoundView.3f315463.chunk.js.map
