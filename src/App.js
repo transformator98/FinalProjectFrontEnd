@@ -24,6 +24,7 @@ const AuthPageView = lazy(() =>
     'views/AuthPageView/AuthPageView' /*AuthPageViewChunkName: "AuthPageView" */
   ),
 );
+
 // const MainPageView = lazy(() =>
 //   import('views/MainPageView' /* webpackChunkName: "MainPageView" */),
 // );

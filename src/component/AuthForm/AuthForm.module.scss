@@ -1,0 +1,119 @@
+/* стили для мобилки */
+.form {
+  width: 280px;
+  background-color: #ffffff;
+  box-shadow: 0px 4px 15px rgba(2, 23, 42, 0.1);
+  padding: 30px 20px;
+}
+
+.text {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 12px;
+  color: #000000;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.buttonGoogleWrapper {
+  text-align: center;
+}
+
+.buttonGoogle {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.02em;
+  color: #000000;
+  background-color: #fafafa;
+  // border:none  сливается кнопка, не видно края
+  border: 1px solid #ced2d1;
+  text-align: center;
+  padding: 18px 38px;
+  margin-bottom: 30px;
+  cursor: pointer;
+}
+
+.buttonGoogle::before {
+  content: ' ';
+  width: 18px;
+  height: 18px;
+  background-image: url(../../icon/google-logo.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  display: inline-block;
+  vertical-align: text-top;
+  margin-right: 10px;
+}
+
+.input {
+  width: 240px;
+  height: 56px;
+  background-color: #ffffff;
+  border: 1px solid #ced2d1;
+  margin-bottom: 20px;
+}
+
+.input::placeholder {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.02em;
+  color: #bbbbbb;
+  padding-left: 25px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.buttonWrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttonSignIn {
+  background-color: #ff6b09;
+  border: none;
+  cursor: pointer;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: bold;
+  font-size: 10px;
+  line-height: 12px;
+  text-align: center;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #ffffff;
+  padding: 25px 28px;
+}
+
+.buttonSignUp {
+  border: 1px solid #ced2d1;
+  background-color: #ffffff;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: bold;
+  font-size: 10px;
+  line-height: 12px;
+  text-align: center;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #000000;
+  padding: 25px 28px;
+}
+
+/* стили на десктоп */
+/* .form {
+    width: 505px;
+}
+
+.text {
+font-size: 14px;
+line-height: 17px;
+}
+ */
