@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import authOperations from '../../redux/auth/auth-operations'
 import styles from './AuthForm.module.scss';
 
 export default function AuthForm() {
@@ -21,15 +22,15 @@ export default function AuthForm() {
   // Sign In (Войти)
   const handleClickLogIn = e => {
     e.preventDefault();
-    // dispatch(authOperations.logIn({ email, password }));
+    dispatch(authOperations.logIn({ email, password }));
     setEmail('');
     setPassword('');
   };
 
     // Sign Up (Регистрация)
-  const handleClickRegistration = e => {
+  const handleClickRegister = e => {
     e.preventDefault();
-    // dispatch(authOperations.logIn({ email, password }));
+    dispatch(authOperations.register({ email, password }));
     setEmail('');
     setPassword('');
   };
@@ -63,7 +64,7 @@ export default function AuthForm() {
       />
       <div className={styles.buttonWrapper}>
         <button className={styles.buttonSignIn} onClick={handleClickLogIn}>Sign in</button>
-        <button className={styles.buttonSignUp} onClick={handleClickRegistration}>Sign up</button>
+        <button className={styles.buttonSignUp} onClick={handleClickRegister}>Sign up</button>
       </div>
     </form>
   );
