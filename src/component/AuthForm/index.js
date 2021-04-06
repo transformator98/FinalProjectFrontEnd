@@ -1,8 +1,41 @@
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import styles from './AuthForm.module.scss';
 
 export default function AuthForm() {
+  const dispatch = useDispatch();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleChange = ({ target: { name, value } }) => {
+    switch (name) {
+      case 'email':
+        return setEmail(value);
+      case 'password':
+        return setPassword(value);
+      default:
+        return;
+    }
+  };
+
+  // Sign In (Войти)
+  const handleClickLogIn = e => {
+    e.preventDefault();
+    // dispatch(authOperations.logIn({ email, password }));
+    setEmail('');
+    setPassword('');
+  };
+
+    // Sign Up (Регистрация)
+  const handleClickRegistration = e => {
+    e.preventDefault();
+    // dispatch(authOperations.logIn({ email, password }));
+    setEmail('');
+    setPassword('');
+  };
+
   return (
-    <form className={styles.form}>
+    <form className={styles.form} autoComplete="off">
       <h2 className={styles.text}>
         You can use your Google Account to authorize:
       </h2>
@@ -16,17 +49,21 @@ export default function AuthForm() {
         type="email"
         name="email"
         placeholder="E-mail"
+        value={email}
         className={styles.input}
+        onChange={handleChange}
       />
       <input
         type="password"
         name="password"
         placeholder="Password"
+        value={password}
         className={styles.input}
+        onChange={handleChange}
       />
       <div className={styles.buttonWrapper}>
-        <button className={styles.buttonSignIn}>Sign in</button>
-        <button className={styles.buttonSignUp}>Sign up</button>
+        <button className={styles.buttonSignIn} onClick={handleClickLogIn}>Sign in</button>
+        <button className={styles.buttonSignUp} onClick={handleClickRegistration}>Sign up</button>
       </div>
     </form>
   );
