@@ -9,7 +9,9 @@ const UserMenu = () => {
   const dispatch = useDispatch();
 
   function onToggleModal() {
-    dispatch(toggleModalAction(value));
+    if (value) {
+      dispatch(toggleModalAction(value));
+    }
   }
 
   return (
