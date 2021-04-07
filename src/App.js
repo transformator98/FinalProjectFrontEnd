@@ -26,6 +26,9 @@ const AuthPageView = lazy(() =>
 const MainPageView = lazy(() =>
   import('views/MainPageView' /* webpackChunkName: "MainPageView" */),
 );
+const TestPageView = lazy(() =>
+  import('./views/TestPageView' /* webpackChunkName: "TestPageView" */),
+);
 const UsefulPageView = lazy(() =>
   import('views/UsefulPageView' /* webpackChunkName: "UsefulPageView" */),
 );
@@ -42,21 +45,20 @@ export default function App() {
         {/* <PublicRoute path="/contacts"> */}
         <ContactPageView />
         {/* </PublicRoute> */}
-
         {/* <PublicRoute path="/auth"> */}
         <AuthPageView />
         {/* </PublicRoute> */}
-
         {/* <PrivateRoute path="/" exact> */}
         <MainPageView />
         {/* </PrivateRoute> */}
-
-        {/* <PrivateRoute path="/useful-info"> */}
-        <UsefulPageView />
+        {/* <PrivateRoute path="/" exact> */}
+        <TestPageView />
         {/* </PrivateRoute> */}
-
+        {/* <PrivateRoute path="/useful-info"> */}
+        {/* <UsefulPageView /> */}
+        {/* </PrivateRoute> */}
         {/* <PublicRoute> */}
-        <NotFoundView />
+        {/* <NotFoundView /> */}
         {/* </PublicRoute> */}
         {/* </Switch> */}
       </Suspense>
