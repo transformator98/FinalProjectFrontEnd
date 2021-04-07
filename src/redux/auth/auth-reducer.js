@@ -30,6 +30,7 @@ const user = createReducer(initialUserState, {
   [registerError]: () => {},
   [loginError]: () => {},
   [logOutError]: () => {},
+
 });
 
 export default user;
