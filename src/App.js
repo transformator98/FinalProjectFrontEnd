@@ -10,8 +10,10 @@ import AppBar from 'component/AppBar';
 import Loader from 'component/Loader';
 // import PrivateRoute from 'component/PrivateRoute';
 // import PublicRoute from 'component/PublicRoute';
+import TestPageView from 'views/TestPageView';
 
 import Result from 'component/Results'; // !!!TEMPORARY ADDED
+import Footer from 'component/Footer';
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -28,8 +30,11 @@ const AuthPageView = lazy(() =>
   ),
 );
 
+// const TestPageView = lazy(() =>
+//   import('./views/TestPageView' /* webpackChunkName: "TestPageView" */),
+// );
 const MainPageView = lazy(() =>
-  import('views/MainPageView' /* webpackChunkName: "MainPageView" */),
+  import('views/MainPageView' /* webpackChunkName: "UsefulPageView" */),
 );
 // const UsefulPageView = lazy(() =>
 //   import('views/UsefulPageView' /* webpackChunkName: "UsefulPageView" */),
@@ -42,6 +47,7 @@ export default function App() {
   return (
     <>
       <AppBar />
+
       <Container>
         <Suspense fallback={<Loader />}>
           <Switch>
@@ -56,7 +62,7 @@ export default function App() {
             {/* <PrivateRoute path="/" exact> */}
             <MainPageView path="/" exact />
             {/* </PrivateRoute> */}
-
+            <TestPageView />
             {/* <PrivateRoute path="/useful-info"> */}
             {/* <UsefulPageView /> */}
             {/* </PrivateRoute> */}
@@ -79,6 +85,7 @@ export default function App() {
           pauseOnHover
         />
       </Container>
+      <Footer />
     </>
   );
 }
