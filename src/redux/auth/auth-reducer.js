@@ -1,22 +1,34 @@
 import { combineReducers } from 'redux';
 
-const emailReducer = (state = '', action) => state;
-const tokenReducer = (state = '', action) => state;
-const testActiveReducer = (state = '', { type, payload }) => {
-  switch (type) {
-    case 'questions/technicalQA':
-      return 'technical QA';
+import { createReducer } from '@reduxjs/toolkit';
+import { TECHNICAL_QA, TESTING_THEORY } from '../questions/question-type';
+import * as authActions from './auth-actions'
 
-    case 'questions/testingTheory':
-      return 'testing theory';
 
-    default:
-      return state;
-  }
+// нужен ли здесь password??????
+const initialUserState = {
+  user: { email: null, password: null },
 };
 
+// сюда будем записывать свойство user из responce
+// в payload будет свойство user и свойство token
+const user = createReducer(initialUserState, {
+  [authActions.registerSuccess]: (_, action) => action.payload.user,
+  [authActions.loginSuccess]: (_, action) => action.payload.user,
+});
+
+const error = createReducer(null, {
+  [authActions.registerError]: (_, action) => action.payload,
+  [authActions.loginError]: (_, action) => action.payload,
+});
+
+
+
+const tokenReducer = (state = '', action) => state;
+
 export default combineReducers({
-  email: emailReducer,
-  testActive: testActiveReducer,
+  user,
+  error,
+  // testActive: testActiveReducer,
   token: tokenReducer,
 });

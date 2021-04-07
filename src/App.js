@@ -1,5 +1,6 @@
-// import { Switch } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
+// import { Suspense } from 'react';
 
 // import { useDispatch, useSelector } from 'react-redux';
 // import { authOperations, authSelectors } from 'redux/auth';
@@ -10,22 +11,25 @@ import Loader from 'component/Loader';
 // import PrivateRoute from 'component/PrivateRoute';
 // import PublicRoute from 'component/PublicRoute';
 
-import Diagram from 'component/Diagram'; // !!!TEMPORARY ADDED
+import Result from 'component/Results'; // !!!TEMPORARY ADDED
+import Footer from 'component/Footer';
+
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import('typeface-montserrat');
 
 const ContactPageView = lazy(() =>
-  import('views/ContactPageView' /* webpackChunkName: "ContactPageView" */),
+  import(
+    'views/ContactPageView/ContactPageView' /* webpackChunkName: "ContactPageView" */
+  ),
 );
 const AuthPageView = lazy(() =>
   import(
     'views/AuthPageView/AuthPageView' /*AuthPageViewChunkName: "AuthPageView" */
   ),
 );
-const MainPageView = lazy(() =>
-  import('views/MainPageView' /* webpackChunkName: "MainPageView" */),
-);
+
+
 const TestPageView = lazy(() =>
   import('./views/TestPageView' /* webpackChunkName: "TestPageView" */),
 );
@@ -36,44 +40,51 @@ const NotFoundView = lazy(() =>
   import('views/NotFoundView' /* webpackChunkName: "NotFoundView" */),
 );
 
+
 export default function App() {
   return (
-    <Container>
+    <>
       <AppBar />
-      <Suspense fallback={<Loader />}>
-        {/* <Switch> */}
-        {/* <PublicRoute path="/contacts"> */}
-        <ContactPageView />
-        {/* </PublicRoute> */}
-        {/* <PublicRoute path="/auth"> */}
-        <AuthPageView />
-        {/* </PublicRoute> */}
-        {/* <PrivateRoute path="/" exact> */}
-        <MainPageView />
-        {/* </PrivateRoute> */}
-        {/* <PrivateRoute path="/" exact> */}
-        <TestPageView />
-        {/* </PrivateRoute> */}
-        {/* <PrivateRoute path="/useful-info"> */}
-        {/* <UsefulPageView /> */}
-        {/* </PrivateRoute> */}
-        {/* <PublicRoute> */}
-        {/* <NotFoundView /> */}
-        {/* </PublicRoute> */}
-        {/* </Switch> */}
-      </Suspense>
-      <Diagram />
-      <ToastContainer
-        position="top-right"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
-    </Container>
+
+      <Container>
+        <Suspense fallback={<Loader />}>
+          <Switch>
+            {/* <PublicRoute path="/contacts"> */}
+            <ContactPageView path="/contacts" />
+            {/* </PublicRoute> */}
+
+            {/* <PublicRoute path="/auth"> */}
+            <AuthPageView path="/auth" />
+            {/* </PublicRoute> */}
+
+            {/* <PrivateRoute path="/" exact> */}
+            <MainPageView path="/" exact />
+            {/* </PrivateRoute> */}
+<TestPageView />
+            {/* <PrivateRoute path="/useful-info"> */}
+            {/* <UsefulPageView /> */}
+            {/* </PrivateRoute> */}
+
+            {/* <PublicRoute> */}
+            {/* <NotFoundView /> */}
+            {/* </PublicRoute> */}
+          </Switch>
+        </Suspense>
+        <Result />
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
+      </Container>
+      <Footer />
+    </>
+
   );
 }

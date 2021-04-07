@@ -25,6 +25,7 @@
     "react-dom": "^17.0.1",
     "react-loader-spinner": "^4.0.0",
     "react-phone-number-input": "^3.1.13",
+    "react-radio-buttons": "^1.2.2",
     "react-redux": "^7.2.2",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
@@ -35,6 +36,7 @@
     "redux-persist": "^6.0.0",
     "slugify": "^1.4.6",
     "typeface-montserrat": "^1.1.13",
+    "uuid": "^8.3.2",
     "uuidv4": "^6.2.6",
     "web-vitals": "^0.2.4"
   },
