@@ -36,8 +36,8 @@ const user = createReducer(initialUserState, {
     state.isLoggedIn = false;
   },
   // //пока что ничего не делаем со стейтом при ошибке
-  [registerError]: () => {},
-  [loginError]: () => {},
-  [logOutError]: () => {},
+  [registerError]: (_, action) => action.payload,
+  [loginError]: (_, action) => action.payload,
+  [logOutError]: (_, action) => action.payload,
 });
 export default user;

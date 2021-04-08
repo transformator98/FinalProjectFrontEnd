@@ -18,7 +18,8 @@ const register = credentials => async dispatch => {
   try {
     const responce = await axios.post('/auth/register', credentials);
 
-    token.set(responce.data.token);
+    // ???????????    проверить когда бек будет отдавать токен
+    token.set(responce.data.user.token);
 
     dispatch(authActions.registerSuccess(responce.data));
   } catch (error) {
@@ -32,7 +33,8 @@ const logIn = credentials => async dispatch => {
   try {
     const responce = await axios.post('/auth/login', credentials);
 
-    token.set(responce.data.token);
+    // ???????????    проверить когда бек будет отдавать токен
+    token.set(responce.data.user.token);
 
     dispatch(authActions.loginSuccess(responce.data));
   } catch (error) {
