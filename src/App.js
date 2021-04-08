@@ -10,7 +10,7 @@ import AppBar from 'component/AppBar';
 import Loader from 'component/Loader';
 // import PrivateRoute from 'component/PrivateRoute';
 // import PublicRoute from 'component/PublicRoute';
-import TestPageView from 'views/TestPageView';
+// import TestPageView from 'views/TestPageView';
 
 import Result from 'component/Results'; // !!!TEMPORARY ADDED
 import Footer from 'component/Footer';
@@ -30,9 +30,9 @@ const AuthPageView = lazy(() =>
   ),
 );
 
-// const TestPageView = lazy(() =>
-//   import('./views/TestPageView' /* webpackChunkName: "TestPageView" */),
-// );
+const TestPageView = lazy(() =>
+  import('./views/TestPageView' /* webpackChunkName: "TestPageView" */),
+);
 const MainPageView = lazy(() =>
   import('views/MainPageView' /* webpackChunkName: "UsefulPageView" */),
 );
@@ -62,7 +62,7 @@ export default function App() {
             {/* <PrivateRoute path="/" exact> */}
             <MainPageView path="/" exact />
             {/* </PrivateRoute> */}
-            <TestPageView />
+            <TestPageView path="/tests" />
             {/* <PrivateRoute path="/useful-info"> */}
             {/* <UsefulPageView /> */}
             {/* </PrivateRoute> */}
