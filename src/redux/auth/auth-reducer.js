@@ -1,31 +1,43 @@
-import { combineReducers } from 'redux';
-
 import { createReducer } from '@reduxjs/toolkit';
 // import { TECHNICAL_QA, TESTING_THEORY } from '../questions/question-type';
-import * as authActions from './auth-actions';
+import {
+  registerSuccess,
+  loginSuccess,
+  logOutSuccess,
+  registerError,
+  loginError,
+  logOutError,
+} from './auth-actions';
 
-// нужен ли здесь password??????
 const initialUserState = {
-  user: { email: null, password: null },
+  name: null,
+  email: null,
+  token: null,
+  isLoggedIn: false,
 };
 
-// сюда будем записывать свойство user из responce
-// в payload будет свойство user и свойство token
 const user = createReducer(initialUserState, {
-  [authActions.registerSuccess]: (_, action) => action.payload.user,
-  [authActions.loginSuccess]: (_, action) => action.payload.user,
+  [registerSuccess]: (state, action) => {
+    state.name = action.payload.data.name;
+    state.email = action.payload.data.email;
+    state.token = action.payload.data.token;
+    state.isLoggedIn = true;
+  },
+  [loginSuccess]: (state, action) => {
+    state.name = action.payload.data.name;
+    state.email = action.payload.data.email;
+    state.token = action.payload.data.token;
+    state.isLoggedIn = true;
+  },
+  [logOutSuccess]: (state, _) => {
+    state.name = null;
+    state.email = null;
+    state.token = null;
+    state.isLoggedIn = false;
+  },
+  // //пока что ничего не делаем со стейтом при ошибке
+  [registerError]: (_, action) => action.payload,
+  [loginError]: (_, action) => action.payload,
+  [logOutError]: (_, action) => action.payload,
 });
-
-const error = createReducer(null, {
-  [authActions.registerError]: (_, action) => action.payload,
-  [authActions.loginError]: (_, action) => action.payload,
-});
-
-const tokenReducer = (state = '', action) => state;
-
-export default combineReducers({
-  user,
-  error,
-  // testActive: testActiveReducer,
-  token: tokenReducer,
-});
+export default user;
