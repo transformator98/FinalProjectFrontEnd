@@ -1,10 +1,12 @@
 import React from 'react';
 
-function UsefullInfoItem({ name, ref }) {
+function UsefulInfoItem({ name, url }) {
   return (
     <>
-      <a href={ref}>{name}</a>
+      <a href={url} target="blank">
+        {name}
+      </a>
     </>
   );
 }
-export default UsefullInfoItem;
+export default UsefulInfoItem;
