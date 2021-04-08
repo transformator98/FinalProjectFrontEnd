@@ -1,5 +1,15 @@
-const NotFoundView = () => {
-  return <h1>APP BAR</h1>;
+import Header from '../Header';
+import Navigation from '../Navigation';
+import AuthNav from '../AuthNav';
+import './AppBar.scss';
+
+const AppBar = () => {
+  return (
+    <Header>
+      <Navigation />
+      <AuthNav />
+    </Header>
+  );
 };
 
-export default NotFoundView;
+export default AppBar;
