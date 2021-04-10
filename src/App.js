@@ -32,9 +32,11 @@ const AuthPageView = lazy(() =>
     'views/AuthPageView/AuthPageView' /*AuthPageViewChunkName: "AuthPageView" */
   ),
 );
-
 const TestPageView = lazy(() =>
   import('./views/TestPageView' /* webpackChunkName: "TestPageView" */),
+);
+const ResultPageView = lazy(() =>
+  import('./views/ResultPageView' /* webpackChunkName: "TestPageView" */),
 );
 const MainPageView = lazy(() =>
   import('views/MainPageView' /* webpackChunkName: "UsefulPageView" */),
@@ -68,6 +70,10 @@ export default function App() {
 
             <Route path={routes.TEST_VIEW}>
               <TestPageView />
+            </Route>
+
+            <Route path={routes.RESULT_VIEW}>
+              <ResultPageView />
             </Route>
 
             <Route path={routes.USEFUL_INFO_VIEW}>
