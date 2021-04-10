@@ -21,11 +21,11 @@ import 'react-toastify/dist/ReactToastify.css';
 import { literature, resources } from './views/UsefulInfo/UsefulInfo.json';
 import('typeface-montserrat');
 
-const ContactPageView = lazy(() =>
-  import(
-    'views/ContactPageView/ContactPageView' /* webpackChunkName: "ContactPageView" */
-  ),
-);
+// const ContactPageView = lazy(() =>
+//   import(
+//     'views/ContactPageView/ContactPageView' /* webpackChunkName: "ContactPageView" */
+//   ),
+// );
 const AuthPageView = lazy(() =>
   import(
     'views/AuthPageView/AuthPageView' /*AuthPageViewChunkName: "AuthPageView" */
@@ -53,9 +53,9 @@ export default function App() {
       <Container>
         <Suspense fallback={<Loader />}>
           <Switch>
-            <PublicRoute path={routes.CONTACTS_VIEW}>
+            {/* <PublicRoute path={routes.CONTACTS_VIEW}>
               <ContactPageView />
-            </PublicRoute>
+            </PublicRoute> */}
 
             <PublicRoute path={routes.AUTH_VIEW} restricted>
               <AuthPageView />
