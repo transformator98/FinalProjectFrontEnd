@@ -7,29 +7,9 @@ const testActiveReducer = createReducer('', {
   [action.testingTheory]: () => 'testing theory',
 });
 const question = createReducer([], {
-  [action.addResult]: (_, { payload }) => [payload],
+  [action.addResult]: (state, { payload }) => [...state, payload],
+  [action.deleteResult]: () => [],
 });
-// const testActiveReducer = (state = '', { type, payload }) => {
-//   switch (type) {
-//     case TECHNICAL_QA:
-//       return 'technical QA';
-
-//     case TESTING_THEORY:
-//       return 'testing theory';
-
-//     default:
-//       return state;
-//   }
-// };
-
-// const question = (state = [], { type, payload }) => {
-//   switch (type) {
-//     case ADD_RESULT:
-//       return [payload];
-//     default:
-//       return state;
-//   }
-// };
 
 export default combineReducers({
   testActive: testActiveReducer,
