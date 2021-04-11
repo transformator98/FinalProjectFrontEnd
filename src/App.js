@@ -58,9 +58,9 @@ export default function App() {
       <Container>
         <Suspense fallback={<Loader />}>
           <Switch>
-            <Route path={routes.GOOGLE_AUTH_VIEW}>
-              {!getLoggedIn ? <Redirect to="/" /> : <Google />}
-            </Route>
+            <PublicRoute exact path={routes.GOOGLE_AUTH_VIEW}>
+              <Google />
+            </PublicRoute>
 
             <PublicRoute path={routes.CONTACTS_VIEW}>
               <ContactPageView />

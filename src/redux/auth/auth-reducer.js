@@ -35,6 +35,7 @@ const user = createReducer(initialUserState, {
     state.name = null;
     state.email = null;
     state.token = null;
+    state.avatar = null;
     state.isLoggedIn = false;
   },
   [googleAuthSuccess]: (state, action) => {
