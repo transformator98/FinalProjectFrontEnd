@@ -7,6 +7,25 @@ body {
 
 html {
   box-sizing: border-box;
+  min-height: 100%;
+  position: relative;
+}
+
+#root {
+  /* height: 100%;
+  position: relative; */
+  margin: 0 0 51px;
+  /* bottom = footer height */
+  /* padding: 25px; */
+}
+
+.footer {
+  /* background-color: orange; */
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 51px;
+  overflow: hidden;
 }
 
 * {
