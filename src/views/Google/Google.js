@@ -9,8 +9,8 @@ const Google = () => {
   const accessToken = new URLSearchParams(location.search).get('accessToken');
   console.log(accessToken);
 
-  async function requestToMongo() {
-    await dispatch(authOperations.requestToMongo(accessToken));
+  function requestToMongo() {
+    dispatch(authOperations.requestToMongo(accessToken));
   }
 
   requestToMongo();
