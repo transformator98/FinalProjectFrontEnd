@@ -11,6 +11,7 @@ import cat from './cat.svg';
 import { connect } from 'react-redux';
 
 const Results = () => {
+
   const tests = useSelector(state => state.tests);
   const testActive = useSelector(state => state.testActive);
   // const testActive = 'testing theory';
@@ -22,6 +23,7 @@ const Results = () => {
     async function getUserResult() {
       try {
         const { data } = await getResult(tests, url);
+
         setResult(data);
       } catch (error) {
         console.error(error);
@@ -30,10 +32,12 @@ const Results = () => {
     getUserResult();
   }, [tests, url]);
 
+
   const handleTryAgain = e => {
     e.preventDefault();
     deleteResult();
   };
+
 
   return (
     <>
@@ -59,6 +63,7 @@ const Results = () => {
         </div>
       )}
     </>
+
   );
 };
 

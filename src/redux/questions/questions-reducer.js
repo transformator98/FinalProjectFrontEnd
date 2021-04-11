@@ -10,6 +10,7 @@ const testActiveReducer = createReducer('', {
 });
 
 const question = createReducer([], {
+
   [action.addResult]: (_, { payload }) => [payload],
   [action.getResultSuccess]: (_, { payload }) => payload,
   [action.deleteResultSuccess]: () => initialResultState,

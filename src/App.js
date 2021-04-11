@@ -1,4 +1,4 @@
-import { Switch, Route } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import routes from './routes';
 
@@ -8,9 +8,8 @@ import routes from './routes';
 import Container from 'component/Container';
 import AppBar from 'component/AppBar';
 import Loader from 'component/Loader';
-// import PrivateRoute from 'component/PrivateRoute';
-// import PublicRoute from 'component/PublicRoute';
-// import TestPageView from 'views/TestPageView';
+import PrivateRoute from 'component/PrivateRoute';
+import PublicRoute from 'component/PublicRoute';
 
 // import Result from 'component/Results'; // !!!TEMPORARY ADDED
 
@@ -39,7 +38,7 @@ const ResultPageView = lazy(() =>
   import('./views/ResultPageView' /* webpackChunkName: "TestPageView" */),
 );
 const MainPageView = lazy(() =>
-  import('views/MainPageView' /* webpackChunkName: "UsefulPageView" */),
+  import('views/MainPageView' /* webpackChunkName: "MainPageView" */),
 );
 const UsefulInfo = lazy(() =>
   import('views/UsefulInfo' /* webpackChunkName: "UsefulPageView" */),
@@ -56,21 +55,26 @@ export default function App() {
       <Container>
         <Suspense fallback={<Loader />}>
           <Switch>
-            <Route path={routes.CONTACTS_VIEW}>
+            <PublicRoute path={routes.CONTACTS_VIEW}>
               <ContactPageView />
-            </Route>
+            </PublicRoute>
 
-            <Route path={routes.AUTH_VIEW}>
+            <PublicRoute path={routes.AUTH_VIEW} restricted>
               <AuthPageView />
-            </Route>
+            </PublicRoute>
 
-            <Route path={routes.MAIN_VIEW} exact>
+            <PrivateRoute
+              path={routes.MAIN_VIEW}
+              exact
+              redirectTo={routes.AUTH_VIEW}
+            >
               <MainPageView />
-            </Route>
+            </PrivateRoute>
 
-            <Route path={routes.TEST_VIEW}>
+            <PrivateRoute path={routes.TEST_VIEW}>
               <TestPageView />
-            </Route>
+            </PrivateRoute>
+
 
             <Route path={routes.RESULT_VIEW}>
               <ResultPageView />
@@ -80,19 +84,19 @@ export default function App() {
               <UsefulInfo literature={literature} resources={resources} />
             </Route>
 
-            <Route>
-              <NotFoundView />
+
+            <Route path={routes.RESULT_VIEW}>
+              <ResultPageView />
             </Route>
 
-            {/* </PublicRoute> */}
+            <Route path={routes.USEFUL_INFO_VIEW}>
 
-            {/* <PrivateRoute path="/" exact> */}
+              <UsefulInfo literature={literature} resources={resources} />
+            </PrivateRoute>
 
-            {/* </PrivateRoute> */}
-
-            {/* <PrivateRoute path="/useful-info"> */}
-
-            {/* </PrivateRoute> */}
+            <PublicRoute>
+              <NotFoundView />
+            </PublicRoute>
           </Switch>
         </Suspense>
         {/* <Result /> */}
