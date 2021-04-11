@@ -11,16 +11,11 @@ html {
   position: relative;
 }
 
-#root {
-  /* height: 100%;
-  position: relative; */
+main {
   margin: 0 0 51px;
-  /* bottom = footer height */
-  /* padding: 25px; */
 }
 
 .footer {
-  /* background-color: orange; */
   position: absolute;
   left: 0;
   bottom: 0;
