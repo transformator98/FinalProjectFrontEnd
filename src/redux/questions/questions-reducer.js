@@ -2,36 +2,37 @@ import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
 import action from './questions-actions';
 
+const initialResultState = [];
+
 const testActiveReducer = createReducer('', {
   [action.technicalQA]: () => 'technical QA',
   [action.testingTheory]: () => 'testing theory',
 });
+
 const question = createReducer([], {
+
   [action.addResult]: (_, { payload }) => [payload],
+  [action.getResultSuccess]: (_, { payload }) => payload,
+  [action.deleteResultSuccess]: () => initialResultState,
 });
-// const testActiveReducer = (state = '', { type, payload }) => {
-//   switch (type) {
-//     case TECHNICAL_QA:
-//       return 'technical QA';
 
-//     case TESTING_THEORY:
-//       return 'testing theory';
+const loading = createReducer(false, {
+  [action.getResultRequest]: () => true,
+  [action.getResultSuccess]: () => false,
+  [action.getResultError]: () => false,
+  [action.deleteResultRequest]: () => true,
+  [action.deleteResultSuccess]: () => false,
+  [action.deleteResultError]: () => false,
+});
 
-//     default:
-//       return state;
-//   }
-// };
-
-// const question = (state = [], { type, payload }) => {
-//   switch (type) {
-//     case ADD_RESULT:
-//       return [payload];
-//     default:
-//       return state;
-//   }
-// };
+const error = createReducer(null, {
+  [action.getResultError]: (_, { payload }) => payload,
+  [action.deleteResultError]: (_, { payload }) => payload,
+});
 
 export default combineReducers({
   testActive: testActiveReducer,
   question: question,
+  loading,
+  error,
 });

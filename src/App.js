@@ -1,6 +1,6 @@
 import { Switch } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
-// import { Suspense } from 'react';
+import routes from './routes';
 
 // import { useDispatch, useSelector } from 'react-redux';
 // import { authOperations, authSelectors } from 'redux/auth';
@@ -8,15 +8,17 @@ import { lazy, Suspense } from 'react';
 import Container from 'component/Container';
 import AppBar from 'component/AppBar';
 import Loader from 'component/Loader';
-// import PrivateRoute from 'component/PrivateRoute';
-// import PublicRoute from 'component/PublicRoute';
-// import TestPageView from 'views/TestPageView';
+import PrivateRoute from 'component/PrivateRoute';
+import PublicRoute from 'component/PublicRoute';
 
-import Result from 'component/Results'; // !!!TEMPORARY ADDED
+// import Result from 'component/Results'; // !!!TEMPORARY ADDED
+
 import Footer from 'component/Footer';
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+// import UsefulInfo from 'views/UsefulInfo';
+import { literature, resources } from './views/UsefulInfo/UsefulInfo.json';
 import('typeface-montserrat');
 
 const ContactPageView = lazy(() =>
@@ -29,19 +31,21 @@ const AuthPageView = lazy(() =>
     'views/AuthPageView/AuthPageView' /*AuthPageViewChunkName: "AuthPageView" */
   ),
 );
-
 const TestPageView = lazy(() =>
   import('./views/TestPageView' /* webpackChunkName: "TestPageView" */),
 );
-const MainPageView = lazy(() =>
-  import('views/MainPageView' /* webpackChunkName: "UsefulPageView" */),
+const ResultPageView = lazy(() =>
+  import('./views/ResultPageView' /* webpackChunkName: "TestPageView" */),
 );
-// const UsefulPageView = lazy(() =>
-//   import('views/UsefulPageView' /* webpackChunkName: "UsefulPageView" */),
-// );
-// const NotFoundView = lazy(() =>
-//   import('views/NotFoundView' /* webpackChunkName: "NotFoundView" */),
-// );
+const MainPageView = lazy(() =>
+  import('views/MainPageView' /* webpackChunkName: "MainPageView" */),
+);
+const UsefulInfo = lazy(() =>
+  import('views/UsefulInfo' /* webpackChunkName: "UsefulPageView" */),
+);
+const NotFoundView = lazy(() =>
+  import('views/NotFoundView' /* webpackChunkName: "NotFoundView" */),
+);
 
 export default function App() {
   return (
@@ -51,30 +55,51 @@ export default function App() {
       <Container>
         <Suspense fallback={<Loader />}>
           <Switch>
-            {/* <PublicRoute path="/contacts"> */}
-            <ContactPageView path="/contacts" />
-            {/* </PublicRoute> */}
+            <PublicRoute path={routes.CONTACTS_VIEW}>
+              <ContactPageView />
+            </PublicRoute>
 
-            {/* <PublicRoute path="/auth"> */}
-            <AuthPageView path="/auth" />
-            {/* </PublicRoute> */}
+            <PublicRoute path={routes.AUTH_VIEW} restricted>
+              <AuthPageView />
+            </PublicRoute>
 
-            {/* <PrivateRoute path="/" exact> */}
-            <MainPageView path="/" exact />
-            {/* </PrivateRoute> */}
+            <PrivateRoute
+              path={routes.MAIN_VIEW}
+              exact
+              redirectTo={routes.AUTH_VIEW}
+            >
+              <MainPageView />
+            </PrivateRoute>
 
-            <TestPageView path="/tests" />
+            <PrivateRoute path={routes.TEST_VIEW}>
+              <TestPageView />
+            </PrivateRoute>
 
-            {/* <PrivateRoute path="/useful-info"> */}
-            {/* <UsefulPageView /> */}
-            {/* </PrivateRoute> */}
 
-            {/* <PublicRoute> */}
-            {/* <NotFoundView /> */}
-            {/* </PublicRoute> */}
+            <Route path={routes.RESULT_VIEW}>
+              <ResultPageView />
+            </Route>
+
+            <Route path={routes.USEFUL_INFO_VIEW}>
+              <UsefulInfo literature={literature} resources={resources} />
+            </Route>
+
+
+            <Route path={routes.RESULT_VIEW}>
+              <ResultPageView />
+            </Route>
+
+            <Route path={routes.USEFUL_INFO_VIEW}>
+
+              <UsefulInfo literature={literature} resources={resources} />
+            </PrivateRoute>
+
+            <PublicRoute>
+              <NotFoundView />
+            </PublicRoute>
           </Switch>
         </Suspense>
-        <Result />
+        {/* <Result /> */}
         <ToastContainer
           position="top-right"
           autoClose={3000}
