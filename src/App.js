@@ -75,22 +75,15 @@ export default function App() {
               <TestPageView />
             </PrivateRoute>
 
-
-            <Route path={routes.RESULT_VIEW}>
-              <ResultPageView />
-            </Route>
-
-            <Route path={routes.USEFUL_INFO_VIEW}>
+            <PublicRoute path={routes.USEFUL_INFO_VIEW}>
               <UsefulInfo literature={literature} resources={resources} />
-            </Route>
+            </PublicRoute>
 
-
-            <Route path={routes.RESULT_VIEW}>
+            <PrivateRoute path={routes.RESULT_VIEW}>
               <ResultPageView />
-            </Route>
+            </PrivateRoute>
 
-            <Route path={routes.USEFUL_INFO_VIEW}>
-
+            <PrivateRoute path={routes.USEFUL_INFO_VIEW}>
               <UsefulInfo literature={literature} resources={resources} />
             </PrivateRoute>
 
