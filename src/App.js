@@ -85,7 +85,7 @@ export default function App() {
 
             <PrivateRoute path={routes.USEFUL_INFO_VIEW}>
               <UsefulInfo literature={literature} resources={resources} />
-            </PrivateRoute>
+            </PublicRoute>
 
             <PublicRoute>
               <NotFoundView />
