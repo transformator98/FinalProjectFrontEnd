@@ -1,4 +1,4 @@
-import { Switch } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import routes from './routes';
 
@@ -7,6 +7,7 @@ import routes from './routes';
 
 import Container from 'component/Container';
 import AppBar from 'component/AppBar';
+import Google from 'views/Google';
 import Loader from 'component/Loader';
 import PrivateRoute from 'component/PrivateRoute';
 import PublicRoute from 'component/PublicRoute';
@@ -19,6 +20,8 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 // import UsefulInfo from 'views/UsefulInfo';
 import { literature, resources } from './views/UsefulInfo/UsefulInfo.json';
+
+import { getLoggedIn } from './redux/auth/auth-selectors';
 import('typeface-montserrat');
 
 const ContactPageView = lazy(() =>
@@ -55,6 +58,10 @@ export default function App() {
       <Container>
         <Suspense fallback={<Loader />}>
           <Switch>
+            <Route path={routes.GOOGLE_AUTH_VIEW}>
+              {!getLoggedIn ? <Redirect to="/" /> : <Google />}
+            </Route>
+
             <PublicRoute path={routes.CONTACTS_VIEW}>
               <ContactPageView />
             </PublicRoute>
@@ -75,13 +82,11 @@ export default function App() {
               <TestPageView />
             </PrivateRoute>
 
-
-            <Route path={routes.RESULT_VIEW}>
+            <PrivateRoute path={routes.RESULT_VIEW}>
               <ResultPageView />
-            </Route>
+            </PrivateRoute>
 
-            <Route path={routes.USEFUL_INFO_VIEW}>
-
+            <PrivateRoute path={routes.USEFUL_INFO_VIEW}>
               <UsefulInfo literature={literature} resources={resources} />
             </PrivateRoute>
 

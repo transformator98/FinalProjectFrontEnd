@@ -38,11 +38,18 @@ const logIn = credentials => async dispatch => {
   }
 };
 
-const logOut = () => async dispatch => {
+const logOut = currentToken => async dispatch => {
   try {
     dispatch(authActions.logOutRequest());
     //заработает когда будет авторизация
-    await axios.post('auth/logout');
+    // await axios.post('auth/logout');
+    await axios({
+      url: 'http://localhost:3030/auth/logout',
+      method: 'post',
+      headers: {
+        Authorization: `Bearer ${currentToken}`,
+      },
+    });
     token.unset();
     dispatch(authActions.logOutSuccess());
   } catch (error) {
@@ -50,9 +57,28 @@ const logOut = () => async dispatch => {
   }
 };
 
+const requestToMongo = accessToken => async dispatch => {
+  try {
+    dispatch(authActions.googleAuthRequest());
+
+    await axios({
+      url: 'http://localhost:3030/auth/user',
+      method: 'get',
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    })
+      .then(({ data }) => dispatch(authActions.googleAuthSuccess(data)))
+      .catch(error => dispatch(authActions.googleAuthError(error.message)));
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const operations = {
   register,
   logIn,
   logOut,
+  requestToMongo,
 };
 export default operations;

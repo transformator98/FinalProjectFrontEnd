@@ -7,13 +7,15 @@ import {
   registerError,
   loginError,
   logOutError,
+  googleAuthSuccess,
 } from './auth-actions';
 
 const initialUserState = {
   name: null,
   email: null,
+  avatar: null,
   token: null,
-  isLoggedIn: true,
+  isLoggedIn: false,
 };
 
 const user = createReducer(initialUserState, {
@@ -34,6 +36,13 @@ const user = createReducer(initialUserState, {
     state.email = null;
     state.token = null;
     state.isLoggedIn = false;
+  },
+  [googleAuthSuccess]: (state, action) => {
+    state.name = action.payload.data.name;
+    state.email = action.payload.data.email;
+    state.token = action.payload.data.token;
+    state.avatar = action.payload.data.avatar;
+    state.isLoggedIn = true;
   },
   // //пока что ничего не делаем со стейтом при ошибке
   [registerError]: (_, action) => action.payload,
