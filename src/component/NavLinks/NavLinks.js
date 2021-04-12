@@ -3,9 +3,12 @@ import { NavLink } from 'react-router-dom';
 import { toggleModalAction } from '../../redux/modal/action';
 import { getModalStatus } from '../../redux/modal/selectors';
 import './NavLinks.scss';
+import routes from 'routes';
+import { getLoggedIn } from 'redux/auth/auth-selectors';
 
 const NavLinks = () => {
   const value = useSelector(getModalStatus);
+  const isLoggedIn = useSelector(getLoggedIn);
   const dispatch = useDispatch();
 
   function onToggleModal() {
@@ -17,27 +20,31 @@ const NavLinks = () => {
   return (
     <ul className="list nav-list">
       <li className="nav-list__item" onClick={onToggleModal}>
-        <NavLink
-          exact
-          to="/"
-          className="nav-list__item-link"
-          activeClassName="active-nav-list__item-link"
-        >
-          Home
-        </NavLink>
+        {isLoggedIn && (
+          <NavLink
+            exact
+            to={routes.MAIN_VIEW}
+            className="nav-list__item-link"
+            activeClassName="active-nav-list__item-link"
+          >
+            Home
+          </NavLink>
+        )}
+      </li>
+      <li className="nav-list__item" onClick={onToggleModal}>
+        {isLoggedIn && (
+          <NavLink
+            to={routes.USEFUL_INFO_VIEW}
+            className="nav-list__item-link"
+            activeClassName="active-nav-list__item-link"
+          >
+            Materials
+          </NavLink>
+        )}
       </li>
       <li className="nav-list__item" onClick={onToggleModal}>
         <NavLink
-          to="/useful-info"
-          className="nav-list__item-link"
-          activeClassName="active-nav-list__item-link"
-        >
-          Materials
-        </NavLink>
-      </li>
-      <li className="nav-list__item" onClick={onToggleModal}>
-        <NavLink
-          to="/contacts"
+          to={routes.CONTACTS_VIEW}
           className="nav-list__item-link"
           activeClassName="active-nav-list__item-link"
         >

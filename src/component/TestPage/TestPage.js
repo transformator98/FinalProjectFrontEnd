@@ -6,9 +6,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import questionActions from '../../redux/questions/questions-actions';
 
+
 export default function TestPage() {
   // const [index, setIndex] = useState(0);
   const [value, setValue] = useState(null);
+
 
   const testName = useSelector(state => state.tests.testActive);
   const userAnswers = useSelector(state => state.tests.question);
@@ -28,6 +30,7 @@ export default function TestPage() {
       getTests('/tests/technicalQA').then(tests =>
         dispatch(questionActions.addRandomQuestions(tests.data.tests)),
       );
+
     }
     getTests('/tests/testingTheory').then(tests =>
       dispatch(questionActions.addRandomQuestions(tests.data.tests)),
@@ -46,6 +49,7 @@ export default function TestPage() {
   }, [index, randomQuestions, userAnswers]);
 
   const handleChange = e => {
+    console.log(e.target.value);
     setValue(e.target.value);
   };
   const moveNext = () => {
@@ -116,8 +120,13 @@ export default function TestPage() {
               <button className={s.nextBtn_disabled} disabled>
                 Next question
               </button>
+
             ) : (
-              <button className={s.nextBtn_active} onClick={moveNext}>
+              <button
+                className={s.nextBtn_active}
+                // onClick={moveNext}
+                onClick={two}
+              >
                 Next question
               </button>
             )}
