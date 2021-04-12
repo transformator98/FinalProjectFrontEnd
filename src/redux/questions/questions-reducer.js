@@ -2,36 +2,76 @@ import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
 import action from './questions-actions';
 
+const initialResultState = [];
+
 const testActiveReducer = createReducer('', {
   [action.technicalQA]: () => 'technical QA',
   [action.testingTheory]: () => 'testing theory',
+  [action.removeRusult]: () => '',
 });
+
 const question = createReducer([], {
-  [action.addResult]: (_, { payload }) => [payload],
+
+  // [action.addResult]: (state, { payload }) => [payload],
+  [action.addResult]: (state, { payload }) => [
+    ...state.filter(question => question.questionId !== payload.questionId),
+
+    payload,
+  ],
+  [action.removeRusult]: () => [],
+  [action.getResultSuccess]: (_, { payload }) => payload,
+  [action.deleteResultSuccess]: () => initialResultState,
 });
-// const testActiveReducer = (state = '', { type, payload }) => {
-//   switch (type) {
-//     case TECHNICAL_QA:
-//       return 'technical QA';
+const randomTest = createReducer([], {
+  [action.getQuestions]: (state, { payload }) => {
+    console.log(payload.question);
+  },
+});
 
-//     case TESTING_THEORY:
-//       return 'testing theory';
+const randomQuestions = createReducer(null, {
+  [action.addRandomQuestions]: (_, { payload }) => [...payload],
+  [action.removeRusult]: () => null,
+});
 
-//     default:
-//       return state;
-//   }
-// };
+const index = createReducer(0, {
+  [action.addIndex]: (state, { payload }) => state + payload,
+  [action.removeRusult]: () => 0,
 
-// const question = (state = [], { type, payload }) => {
-//   switch (type) {
-//     case ADD_RESULT:
-//       return [payload];
-//     default:
-//       return state;
-//   }
-// };
+});
+
+const testIndex = createReducer(null, {
+  [action.getQuestions]: (state, { payload }) => payload.questionId,
+});
+
+const loading = createReducer(false, {
+  [action.getResultRequest]: () => true,
+  [action.getResultSuccess]: () => false,
+  [action.getResultError]: () => false,
+  [action.deleteResultRequest]: () => true,
+  [action.deleteResultSuccess]: () => false,
+  [action.deleteResultError]: () => false,
+});
+
+const error = createReducer(null, {
+  [action.getResultError]: (_, { payload }) => payload,
+  [action.deleteResultError]: (_, { payload }) => payload,
+});
 
 export default combineReducers({
   testActive: testActiveReducer,
   question: question,
+  randomQuestions,
+  index,
+  randomTest,
+  testIndex,
+  loading,
+  error,
+
 });
+
+// ...state.map(question => {
+//   if (question.questionId === payload.questionId) {
+//     return { ...question, ...payload };
+//   }
+//   return payload;
+// }),

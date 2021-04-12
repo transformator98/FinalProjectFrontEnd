@@ -16,21 +16,26 @@
   margin-bottom: 20px;
 }
 .buttonGoogleWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
 }
 .buttonGoogle {
+  display: block;
+  width: 159px;
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: bold;
   font-size: 14px;
-  line-height: 17px;
+  line-height: 49px;
   letter-spacing: 0.02em;
   color: #000000;
   background-color: #fafafa;
   // border:none  сливается кнопка, не видно края
   border: 1px solid #ced2d1;
   text-align: center;
-  padding: 18px 38px;
+  // padding: 18px 38px;
   margin-bottom: 30px;
   cursor: pointer;
 }
@@ -48,8 +53,15 @@
 .input {
   width: 240px;
   height: 56px;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.02em;
   background-color: #ffffff;
   border: 1px solid #ced2d1;
+  padding-left: 25px;
   margin-bottom: 20px;
 }
 .input::placeholder {
@@ -60,7 +72,6 @@
   line-height: 17px;
   letter-spacing: 0.02em;
   color: #bbbbbb;
-  padding-left: 25px;
   padding-top: 20px;
   padding-bottom: 20px;
 }
@@ -83,9 +94,18 @@
   color: #ffffff;
   padding: 25px 28px;
 }
+
+.buttonSignIn:hover {
+  border: 1px solid #ced2d1;
+  background-color: #ffffff;
+  color: #000000;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+}
+
 .buttonSignUp {
   border: 1px solid #ced2d1;
   background-color: #ffffff;
+  cursor: pointer;
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: bold;
@@ -96,6 +116,12 @@
   text-transform: uppercase;
   color: #000000;
   padding: 25px 28px;
+}
+
+.buttonSignUp:hover {
+  background-color: #ff6b09;
+  color: #ffffff;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
 }
 
 // стили для таблетки
@@ -112,7 +138,7 @@
   }
 
   .buttonGoogleWrapper {
-    text-align: left;
+    justify-content: flex-start;
   }
 
   .buttonGoogle {
@@ -157,7 +183,7 @@
   }
 
   .buttonGoogleWrapper {
-    text-align: left;
+    justify-content: flex-start;
   }
 
   .buttonGoogle {
