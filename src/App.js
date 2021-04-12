@@ -65,7 +65,7 @@ export default function App() {
             <MainPageView path="/" exact />
             {/* </PrivateRoute> */}
 
-            <TestPageView path="/tests" />
+            <TestPageView path="/test" />
 
             {/* <PrivateRoute path="/useful-info"> */}
             <UsefulInfo

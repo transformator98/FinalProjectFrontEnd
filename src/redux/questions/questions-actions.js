@@ -11,5 +11,19 @@ const addResult = createAction('questions/results', (testId, testValue) => ({
   },
 }));
 
-const actions = { technicalQA, testingTheory, addResult };
+const removeRusult = createAction('questions/removeRusult');
+
+const addRandomQuestions = createAction('questions/addRandomQuestions');
+
+const addIndex = createAction('questions/addIndex');
+
+const actions = {
+  addIndex,
+  technicalQA,
+  testingTheory,
+  addResult,
+  removeRusult,
+  addRandomQuestions,
+};
+
 export default actions;
