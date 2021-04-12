@@ -1,16 +1,8 @@
-.usefullContainer {
-  padding-top: 40px;
-  padding-bottom: 111px;
-  margin-left: 20px;
-  @media screen and (min-width: 768px) {
-    padding-top: 119px;
-    padding-bottom: 419px;
-  }
-}
-.usefullInfo {
+.materialsSection {
+  background-color: #fff;
   background-repeat: no-repeat;
+  background-position: right;
   background-size: cover;
-  background-position-y: top;
   @media screen and (max-width: 767px) {
     background-image: url('./images/usefulInfoMobile.jpg');
   }
@@ -21,15 +13,11 @@
   }
   @media screen and (min-width: 768px) {
     background-image: url('./images/usefulInfoTablet.jpg');
-    // background-position-y: center;
   }
   @media screen and (min-device-pixel-ratio: 2) and (min-width: 768px),
     screen and (min-resolution: 192dpi) and (min-width: 768px),
     screen and (min-resolution: 2dppx) and (min-width: 768px) {
     background-image: url('./images/usefulInfoTablet@2x.jpg');
-  }
-  @media screen and (min-width: 1280px) {
-    background-image: url('./images/usefulInfoDesktop.jpg');
   }
   @media screen and (min-device-pixel-ratio: 2) and (min-width: 1280px),
     screen and (min-resolution: 192dpi) and (min-width: 1280px),
@@ -37,6 +25,18 @@
     background-image: url('./images/usefulInfoDesktop@2x.jpg');
   }
 }
+
+.usefullContainer {
+  padding-top: 40px;
+  padding-bottom: 111px;
+
+  margin-left: 20px;
+  @media screen and (min-width: 768px) {
+    padding-top: 119px;
+    padding-bottom: 419px;
+  }
+}
+
 .title {
   font-family: Montserrat;
   font-size: 18px;
@@ -50,6 +50,9 @@
     margin-left: 115px;
     font-size: 22px;
     line-height: 30px;
+  }
+  @media screen and (min-width: 1280px) {
+    margin-left: 190px;
   }
 }
 
@@ -77,6 +80,10 @@
   @media screen and (min-width: 768px) {
     margin-left: 175px;
   }
+
+  @media screen and (min-width: 1280px) {
+    margin-left: 250px;
+  }
 }
 .list:not(:last-child) {
   margin-bottom: 38px;
@@ -95,29 +102,3 @@
   letter-spacing: 0.02em;
   display: inline-block;
 }
-// @media (max-width: 768px) {
-//   .useContainer {
-//     padding-top: 120px;
-//     margin-left: 115px;
-//     margin-bottom: 416px;
-//   }
-// }
-// @media (max-width: 320px) {
-//   .useContainer {
-//     padding-top: 40px;
-//     margin-left: 20px;
-//     margin-bottom: 112px;
-//   }
-//   .usefulInfo {
-//     width: 200px;
-//   }
-//   .title {
-//     font-size: 18px;
-//     line-height: 22px;
-//     margin-bottom: 38px;
-//     width: 120px;
-//   }
-//   .title::after {
-//     width: 150px;
-//     top: 70px;
-//   }
