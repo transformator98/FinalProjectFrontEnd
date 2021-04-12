@@ -4,6 +4,9 @@ import * as authActions from './auth-actions';
 
 axios.defaults.baseURL = 'https://intense-stream-90411.herokuapp.com';
 
+// http://localhost:3030 не видаляти, необхідно для проведення тестів
+// axios.defaults.baseURL = 'http://localhost:3030';
+
 const token = {
   set(token) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -41,7 +44,7 @@ const logIn = credentials => async dispatch => {
 
 const logout = createAsyncThunk('auth/logout', async () => {
   try {
-    await axios.post('http://localhost:3030/auth/logout');
+    await axios.post('/auth/logout');
     token.unset();
   } catch (error) {
     console.log(error.message);
@@ -53,7 +56,7 @@ const requestToMongo = createAsyncThunk(
   async accessToken => {
     try {
       const { data } = await axios({
-        url: 'http://localhost:3030/auth/user',
+        url: '/auth/user',
         method: 'get',
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -78,7 +81,7 @@ const fetchCurrentUser = createAsyncThunk(
     token.set(localstoragedToken);
 
     try {
-      const { data } = await axios.get('http://localhost:3030/auth/user');
+      const { data } = await axios.get('/auth/user');
       return data;
     } catch (error) {
       console.log(error);
