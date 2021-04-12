@@ -1,3 +1,5 @@
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import routes from './routes';
@@ -21,7 +23,9 @@ import 'react-toastify/dist/ReactToastify.css';
 // import UsefulInfo from 'views/UsefulInfo';
 import { literature, resources } from './views/UsefulInfo/UsefulInfo.json';
 
-import { getLoggedIn } from './redux/auth/auth-selectors';
+// import { getLoggedIn } from './redux/auth/auth-selectors';
+import { authOperations } from './redux/auth';
+
 import('typeface-montserrat');
 
 const ContactPageView = lazy(() =>
@@ -51,6 +55,12 @@ const NotFoundView = lazy(() =>
 );
 
 export default function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(authOperations.fetchCurrentUser());
+  }, [dispatch]);
+
   return (
     <>
       <AppBar />

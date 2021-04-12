@@ -3,19 +3,14 @@ import styles from './styles.module.scss';
 import React, { useEffect, useState } from 'react';
 import operations from '../../redux/auth/auth-operations';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  getUserAvatar,
-  getUsername,
-  getToken,
-} from '../../redux/auth/auth-selectors';
+import { authSelectors } from '../../redux/auth';
 
 function AuthHav() {
   const [name, setName] = useState();
   const [avatarUrl, setAvatarUrl] = useState();
   const dispatch = useDispatch();
-  const userAvatar = useSelector(getUserAvatar);
-  const userName = useSelector(getUsername);
-  const token = useSelector(getToken);
+  const userAvatar = useSelector(authSelectors.getUserAvatar);
+  const userName = useSelector(authSelectors.getUsername);
 
   useEffect(() => {
     try {
@@ -27,7 +22,7 @@ function AuthHav() {
   }, [userName, userAvatar]);
 
   const handleLogOut = () => {
-    dispatch(operations.logOut(token));
+    dispatch(operations.logout());
   };
 
   return (
