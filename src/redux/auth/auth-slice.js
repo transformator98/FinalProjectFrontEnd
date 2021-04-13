@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 import authOperations from './auth-operations';
-// import { TECHNICAL_QA, TESTING_THEORY } from '../questions/question-type';
 import {
   registerSuccess,
   loginSuccess,
@@ -8,7 +7,6 @@ import {
   registerError,
   loginError,
   logOutError,
-  // googleAuthSuccess,
 } from './auth-actions';
 
 const initialState = {
@@ -35,7 +33,6 @@ const authSlice = createSlice({
       state.isRefreshingCurrentUser = true;
     },
     [authOperations.fetchCurrentUser.fulfilled](state, action) {
-      console.log('payload>>>>>', action.payload);
       state.name = action.payload.data.name;
       state.email = action.payload.data.email;
       state.token = action.payload.data.token;

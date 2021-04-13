@@ -1,7 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import Button from '../Button';
 import Modal from '../Modal';
-// import PublicNavItem from '../PublicNavItem';
 import UserMenu from '../NavLinks';
 import { toggleModalAction } from '../../redux/modal/action';
 import { getModalStatus } from '../../redux/modal/selectors';
@@ -37,7 +36,6 @@ const Header = ({ children }) => {
         )}
         {value && (
           <Modal>
-            {/* <PublicNavItem/> */}
             <UserMenu />
             <div className="exit-wrapper" onClick={onToggleModal}>
               <Exit />
