@@ -7,13 +7,28 @@ const initialResultState = [];
 const testActiveReducer = createReducer('', {
   [action.technicalQA]: () => 'technical QA',
   [action.testingTheory]: () => 'testing theory',
+  [action.removeRusult]: () => '',
 });
 
 const question = createReducer([], {
+  [action.addResult]: (state, { payload }) => [
+    ...state.filter(question => question.questionId !== payload.questionId),
 
-  [action.addResult]: (_, { payload }) => [payload],
+    payload,
+  ],
+  [action.removeRusult]: () => [],
   [action.getResultSuccess]: (_, { payload }) => payload,
   [action.deleteResultSuccess]: () => initialResultState,
+});
+
+const randomQuestions = createReducer(null, {
+  [action.addRandomQuestions]: (_, { payload }) => [...payload],
+  [action.removeRusult]: () => null,
+});
+
+const index = createReducer(0, {
+  [action.addIndex]: (state, { payload }) => state + payload,
+  [action.removeRusult]: () => 0,
 });
 
 const loading = createReducer(false, {
@@ -33,6 +48,15 @@ const error = createReducer(null, {
 export default combineReducers({
   testActive: testActiveReducer,
   question: question,
+  randomQuestions,
+  index,
   loading,
   error,
 });
+
+// ...state.map(question => {
+//   if (question.questionId === payload.questionId) {
+//     return { ...question, ...payload };
+//   }
+//   return payload;
+// }),

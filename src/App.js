@@ -1,3 +1,5 @@
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 import { Switch } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import routes from './routes';
@@ -7,6 +9,7 @@ import routes from './routes';
 
 import Container from 'component/Container';
 import AppBar from 'component/AppBar';
+import Google from 'views/Google';
 import Loader from 'component/Loader';
 import PrivateRoute from 'component/PrivateRoute';
 import PublicRoute from 'component/PublicRoute';
@@ -19,6 +22,10 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 // import UsefulInfo from 'views/UsefulInfo';
 import { literature, resources } from './views/UsefulInfo/UsefulInfo.json';
+
+// import { getLoggedIn } from './redux/auth/auth-selectors';
+import { authOperations } from './redux/auth';
+
 import('typeface-montserrat');
 
 const ContactPageView = lazy(() =>
@@ -48,6 +55,12 @@ const NotFoundView = lazy(() =>
 );
 
 export default function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(authOperations.fetchCurrentUser());
+  }, [dispatch]);
+
   return (
     <>
       <AppBar />
@@ -55,6 +68,10 @@ export default function App() {
       <Container>
         <Suspense fallback={<Loader />}>
           <Switch>
+            <PublicRoute exact path={routes.GOOGLE_AUTH_VIEW}>
+              <Google />
+            </PublicRoute>
+
             <PublicRoute path={routes.CONTACTS_VIEW}>
               <ContactPageView />
             </PublicRoute>
@@ -75,12 +92,12 @@ export default function App() {
               <TestPageView />
             </PrivateRoute>
 
-            <PublicRoute path={routes.USEFUL_INFO_VIEW}>
-              <UsefulInfo literature={literature} resources={resources} />
-            </PublicRoute>
-
             <PrivateRoute path={routes.RESULT_VIEW}>
               <ResultPageView />
+            </PrivateRoute>
+
+            <PrivateRoute path={routes.USEFUL_INFO_VIEW}>
+              <UsefulInfo literature={literature} resources={resources} />
             </PrivateRoute>
 
             <PublicRoute>
@@ -88,7 +105,7 @@ export default function App() {
             </PublicRoute>
           </Switch>
         </Suspense>
-        {/* <Result /> */}
+
         <ToastContainer
           position="top-right"
           autoClose={3000}
