@@ -38,7 +38,6 @@ const AuthPageView = lazy(() =>
   ),
 );
 
-
 const TestPageView = lazy(() =>
   import('./views/TestPageView' /* webpackChunkName: "TestPageView" */),
 );
@@ -71,7 +70,6 @@ export default function App() {
 
   return (
     <>
-
       {isRefreshingCurrentUser ? (
         <div>
           <Loader />
@@ -89,10 +87,10 @@ export default function App() {
                   <ContactPageView />
                 </PublicRoute>
                 <PublicRoute exact path={routes.AUTH_VIEW} restricted>
-                  <AuthPageView action="signup"/>
+                  <AuthPageView />
                 </PublicRoute>
                 <PublicRoute exact path={routes.AUTH_SIGNUP} restricted>
-                  <AuthPageView action="signup"/>
+                  <AuthPageView />
                 </PublicRoute>
                 <PublicRoute exact path={routes.AUTH_SIGNIN} restricted>
                   <AuthPageView action="signin" />
@@ -134,7 +132,6 @@ export default function App() {
           <Footer />
         </>
       )}
-
     </>
   );
 }
