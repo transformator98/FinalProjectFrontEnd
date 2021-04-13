@@ -24,7 +24,6 @@ export default function MainPage() {
       </h2>
       <h3 className={s.author}>Linus Torvalds</h3>
       <p className={s.authorDesc}>Linux kernel creator, hacker, 1969</p>
-
       <section className={s.card}>
         {testActive === 'testing theory' ? (
           <Link>
