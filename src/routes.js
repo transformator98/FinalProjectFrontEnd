@@ -1,5 +1,7 @@
 const routes = {
   AUTH_VIEW: '/auth',
+  AUTH_SIGNUP: '/auth/signup',
+  AUTH_SIGNIN: '/auth/signin',
   MAIN_VIEW: '/',
   TEST_VIEW: '/test',
   RESULT_VIEW: '/result',

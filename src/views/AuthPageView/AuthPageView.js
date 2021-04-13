@@ -1,8 +1,11 @@
-import AuthForm from '../../component/AuthForm/index';
-
+import SignIn from '../../component/AuthForm/SingIn';
+import SignUp from '../../component/AuthForm/SignUp';
 import styles from './AuthPageView.module.scss';
 
-const AuthPageView = () => {
+const AuthPageView = ({action}) => {
+  console.log('signIn', action)
+  const signIn = action === "signin"
+  const signUp = action === "signup"
   return (
     <section className={styles.section}>
       <div className={styles.wrapper}>
@@ -18,7 +21,8 @@ const AuthPageView = () => {
         </p>
       </div>
       <div className={styles.wrapper}>
-        <AuthForm />
+        {signIn && <SignIn />}
+        {signUp && <SignUp />}
       </div>
     </section>
   );
