@@ -91,7 +91,7 @@ export default function TestPage() {
             <h2 className={s.testName}>{testName}</h2>
             {index === 11 && value ? (
               <NavLink
-                to="/contacts"
+                to="/result"
                 className={s.finishBtn}
                 onClick={sendAnswers}
               >
