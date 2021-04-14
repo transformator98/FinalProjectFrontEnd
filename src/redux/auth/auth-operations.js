@@ -72,9 +72,16 @@ const logIn = credentials => async dispatch => {
   }
 };
 
-const logout = createAsyncThunk('auth/logout', async () => {
+const logOut = createAsyncThunk('auth/logout', async token => {
   try {
-    await axios.post('/auth/logout');
+    // await axios.post('/auth/logout');
+    await axios({
+      url: '/auth/logout',
+      method: 'post',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     token.unset();
   } catch (e) {
     if (e.response.data.code === 204) {
@@ -98,6 +105,7 @@ const requestToMongo = createAsyncThunk(
           Authorization: `Bearer ${accessToken}`,
         },
       });
+
       return data;
     } catch (error) {
       console.log(error);
@@ -110,6 +118,7 @@ const fetchCurrentUser = createAsyncThunk(
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const localstoragedToken = state.user.token;
+
     if (localstoragedToken === null) {
       return thunkAPI.rejectWithValue();
     }
@@ -118,6 +127,7 @@ const fetchCurrentUser = createAsyncThunk(
 
     try {
       const { data } = await axios.get('/auth/user');
+
       return data;
     } catch (error) {
       console.log(error);
@@ -128,7 +138,7 @@ const fetchCurrentUser = createAsyncThunk(
 const operations = {
   register,
   logIn,
-  logout,
+  logOut,
   requestToMongo,
   fetchCurrentUser,
 };
