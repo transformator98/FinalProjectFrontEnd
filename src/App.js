@@ -37,6 +37,7 @@ const AuthPageView = lazy(() =>
     'views/AuthPageView/AuthPageView' /*AuthPageViewChunkName: "AuthPageView" */
   ),
 );
+
 const TestPageView = lazy(() =>
   import('./views/TestPageView' /* webpackChunkName: "TestPageView" */),
 );
@@ -86,8 +87,14 @@ export default function App() {
                 <PublicRoute path={routes.CONTACTS_VIEW}>
                   <ContactPageView />
                 </PublicRoute>
-                <PublicRoute path={routes.AUTH_VIEW} restricted>
+                <PublicRoute exact path={routes.AUTH_VIEW} restricted>
                   <AuthPageView />
+                </PublicRoute>
+                <PublicRoute exact path={routes.AUTH_SIGNUP} restricted>
+                  <AuthPageView />
+                </PublicRoute>
+                <PublicRoute exact path={routes.AUTH_SIGNIN} restricted>
+                  <AuthPageView action="signin" />
                 </PublicRoute>
                 <PrivateRoute
                   path={routes.MAIN_VIEW}
