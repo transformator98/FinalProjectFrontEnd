@@ -41,6 +41,7 @@ const authSlice = createSlice({
       state.isRefreshingCurrentUser = false;
     },
     [authOperations.fetchCurrentUser.rejected](state) {
+      state.token = null;
       state.isRefreshingCurrentUser = false;
     },
     [authOperations.logout.fulfilled](state, action) {

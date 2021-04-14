@@ -1,13 +1,14 @@
 import { useSelector, useDispatch } from 'react-redux';
 import Button from '../Button';
 import Modal from '../Modal';
-import UserMenu from '../NavLinks';
+import Navlinks from '../NavLinks';
 import { toggleModalAction } from '../../redux/modal/action';
 import { getModalStatus } from '../../redux/modal/selectors';
-import { ReactComponent as MobileMenuBtn } from './mobile-menu-btn.svg';
-import { ReactComponent as CloseModalBtn } from './close-modal-btn.svg';
-import { ReactComponent as Exit } from './exit.svg';
+import { ReactComponent as MobileMenuBtn } from '../../icon/open-mobile-menu-btn.svg';
+import { ReactComponent as CloseMenuBtn } from '../../icon/close-moile-menu.svg';
+import { ReactComponent as SignOutIcon } from '../../icon/sign-out.svg';
 import './Header.scss';
+import { authOperations } from 'redux/auth';
 
 const Header = ({ children }) => {
   const value = useSelector(getModalStatus);
@@ -15,6 +16,11 @@ const Header = ({ children }) => {
 
   function onToggleModal() {
     dispatch(toggleModalAction(value));
+  }
+
+  function closeLogout() {
+    dispatch(authOperations.logout());
+    onToggleModal();
   }
 
   return (
@@ -30,15 +36,19 @@ const Header = ({ children }) => {
         ) : (
           <Button
             className="site-header__button"
-            children={<CloseModalBtn />}
+            children={<CloseMenuBtn />}
             onClick={onToggleModal}
           />
         )}
         {value && (
           <Modal>
-            <UserMenu />
-            <div className="exit-wrapper" onClick={onToggleModal}>
-              <Exit />
+            <Navlinks />
+            <div className="sign-out-btn-wrapper">
+              <Button
+                className="modal-sign-out-btn"
+                children={<SignOutIcon />}
+                onClick={closeLogout}
+              ></Button>
             </div>
           </Modal>
         )}

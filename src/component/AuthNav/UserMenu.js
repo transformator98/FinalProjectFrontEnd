@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { authSelectors } from '../../redux/auth';
 import React, { useEffect, useState } from 'react';
 import { ReactComponent as SignOutIcon } from '../../icon/sign-out.svg';
 import styles from './styles.module.scss';
-import operations from '../../redux/auth/auth-operations';
+import { authSelectors } from '../../redux/auth';
+import { authOperations } from '../../redux/auth';
 import Button from '../Button';
 
 function AuthHav() {
@@ -23,7 +23,7 @@ function AuthHav() {
   }, [userName, userAvatar]);
 
   const handleLogOut = () => {
-    dispatch(operations.logout());
+    dispatch(authOperations.logout());
   };
 
   return (
@@ -44,17 +44,8 @@ function AuthHav() {
       <Button
         children={<SignOutIcon />}
         className={styles.signOutButton}
-        // onClick={}
+        onClick={handleLogOut}
       />
-      {/* <buttom className={styles.signOutIconWrapper} onClick={handleLogOut}>
-        <img
-          className={styles.signOutIcon}
-          src={icon}
-          alt="sign-out"
-          width="16"
-          height="16"
-        />
-      </button> */}
     </div>
   );
 }

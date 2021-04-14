@@ -62,6 +62,7 @@ const requestToMongo = createAsyncThunk(
           Authorization: `Bearer ${accessToken}`,
         },
       });
+
       return data;
     } catch (error) {
       console.log(error);
@@ -74,6 +75,7 @@ const fetchCurrentUser = createAsyncThunk(
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const localstoragedToken = state.user.token;
+
     if (localstoragedToken === null) {
       return thunkAPI.rejectWithValue();
     }
@@ -82,6 +84,7 @@ const fetchCurrentUser = createAsyncThunk(
 
     try {
       const { data } = await axios.get('/auth/user');
+
       return data;
     } catch (error) {
       console.log(error);

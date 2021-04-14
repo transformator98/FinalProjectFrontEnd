@@ -7,33 +7,27 @@
 }
 
 .signOutButton {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 56px;
-  background-color: rgb(245, 246, 251);
-  border: none;
-  border-left: 1px solid rgb(226, 227, 229);
-  outline: none;
-  cursor: pointer;
+  display: none;
+
+  @media (min-width: 768px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 56px;
+    background-color: rgb(245, 246, 251);
+    border: none;
+    border-left: 1px solid rgb(226, 227, 229);
+    outline: none;
+    cursor: pointer;
+  }
 }
 
-// .signOutIcon {
-//   width: 16px;
-//   height: 16px;
-
-//   @media (max-width: 767px) {
-//     width: 0;
-//     height: 0;
-//   }
-// }
 .authNav {
   display: flex;
   justify-content: space-between;
-  // align-items: center;
 
   @media (max-width: 767px) {
-    width: 30px;
+    width: 48px;
   }
 
   @media (min-width: 768px) {
@@ -58,6 +52,7 @@
   line-height: 16px;
   letter-spacing: 0.02em;
   text-align: right;
+
   @media (max-width: 767px) {
     display: none;
     width: 0;
