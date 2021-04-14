@@ -12,6 +12,7 @@ function AuthHav() {
   const dispatch = useDispatch();
   const userAvatar = useSelector(authSelectors.getUserAvatar);
   const userName = useSelector(authSelectors.getUsername);
+  const token = useSelector(authSelectors.getToken);
 
   useEffect(() => {
     try {
@@ -23,7 +24,7 @@ function AuthHav() {
   }, [userName, userAvatar]);
 
   const handleLogOut = () => {
-    dispatch(authOperations.logout());
+    dispatch(authOperations.logOut(token));
   };
 
   return (

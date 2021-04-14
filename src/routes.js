@@ -6,6 +6,7 @@ const routes = {
   USEFUL_INFO_VIEW: '/useful-info',
   CONTACTS_VIEW: '/contacts',
   GOOGLE_AUTH_VIEW: '/auth/google/',
+  WRONG: '/wrong',
 };
 
 export default routes;

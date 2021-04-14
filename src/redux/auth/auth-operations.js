@@ -42,9 +42,16 @@ const logIn = credentials => async dispatch => {
   }
 };
 
-const logout = createAsyncThunk('auth/logout', async () => {
+const logOut = createAsyncThunk('auth/logout', async token => {
   try {
-    await axios.post('/auth/logout');
+    // await axios.post('/auth/logout');
+    await axios({
+      url: '/auth/logout',
+      method: 'post',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     token.unset();
   } catch (error) {
     console.log(error.message);
@@ -95,7 +102,7 @@ const fetchCurrentUser = createAsyncThunk(
 const operations = {
   register,
   logIn,
-  logout,
+  logOut,
   requestToMongo,
   fetchCurrentUser,
 };

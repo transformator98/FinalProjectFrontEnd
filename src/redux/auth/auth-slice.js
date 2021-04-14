@@ -44,7 +44,7 @@ const authSlice = createSlice({
       state.token = null;
       state.isRefreshingCurrentUser = false;
     },
-    [authOperations.logout.fulfilled](state, action) {
+    [authOperations.logOut.fulfilled](state) {
       state.name = null;
       state.email = null;
       state.token = null;
