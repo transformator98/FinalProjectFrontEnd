@@ -37,6 +37,7 @@ const AuthPageView = lazy(() =>
     'views/AuthPageView/AuthPageView' /*AuthPageViewChunkName: "AuthPageView" */
   ),
 );
+
 const TestPageView = lazy(() =>
   import('./views/TestPageView' /* webpackChunkName: "TestPageView" */),
 );
@@ -54,6 +55,9 @@ const NotFoundView = lazy(() =>
     'views/NotFoundView/NotFoundView' /* webpackChunkName: "NotFoundView" */
   ),
 );
+const WrongView = lazy(() =>
+  import('views/WrongView' /* webpackChunkName: "WrongView" */),
+);
 
 export default function App() {
   const isRefreshingCurrentUser = useSelector(
@@ -61,15 +65,12 @@ export default function App() {
   );
   const dispatch = useDispatch();
 
-  console.log('isRefreshingCurrentUser', isRefreshingCurrentUser);
-
   useEffect(() => {
     dispatch(authOperations.fetchCurrentUser());
   }, [dispatch]);
 
   return (
     <>
-
       {isRefreshingCurrentUser ? (
         <div>
           <Loader />
@@ -86,8 +87,14 @@ export default function App() {
                 <PublicRoute path={routes.CONTACTS_VIEW}>
                   <ContactPageView />
                 </PublicRoute>
-                <PublicRoute path={routes.AUTH_VIEW} restricted>
+                <PublicRoute exact path={routes.AUTH_VIEW} restricted>
                   <AuthPageView />
+                </PublicRoute>
+                <PublicRoute exact path={routes.AUTH_SIGNUP} restricted>
+                  <AuthPageView />
+                </PublicRoute>
+                <PublicRoute exact path={routes.AUTH_SIGNIN} restricted>
+                  <AuthPageView action="signin" />
                 </PublicRoute>
                 <PrivateRoute
                   path={routes.MAIN_VIEW}
@@ -105,6 +112,9 @@ export default function App() {
                 <PrivateRoute path={routes.USEFUL_INFO_VIEW}>
                   <UsefulInfo literature={literature} resources={resources} />
                 </PrivateRoute>
+                <PublicRoute path={routes.WRONG}>
+                  <WrongView />
+                </PublicRoute>
                 <PublicRoute>
                   <NotFoundView />
                 </PublicRoute>
@@ -122,11 +132,10 @@ export default function App() {
               draggable
               pauseOnHover
             />
+            <Footer />
           </Container>
-          <Footer />
         </>
       )}
-
     </>
   );
 }

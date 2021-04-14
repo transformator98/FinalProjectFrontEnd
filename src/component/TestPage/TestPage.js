@@ -82,6 +82,7 @@ export default function TestPage() {
   };
 
   const sendAnswers = () => {
+
     // dispatch(
     //   questionActions.addResult(
     //     randomQuestions[index].questionId,
@@ -89,6 +90,7 @@ export default function TestPage() {
     //     randomQuestions[index].question,
     //   ),
     // );
+
     getResult(url, userAnswers);
   };
 
@@ -100,16 +102,18 @@ export default function TestPage() {
             <h2 className={s.testName}>{testName}</h2>
             {index === 11 && value ? (
               <button
+
                 to="/contacts"
+
                 className={s.finishBtn}
                 onClick={sendAnswers}
               >
                 Finish test
               </button>
             ) : (
-              <NavLink to="/" className={s.finishBtn} onClick={finishTest}>
+              <button to="/" className={s.finishBtn} onClick={finishTest}>
                 Finish test
-              </NavLink>
+              </button>
             )}
           </div>
           <div className={s.testCard}>
