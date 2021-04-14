@@ -37,7 +37,6 @@ const register = credentials => async dispatch => {
     const responce = await axios.post('/auth/register', credentials);
 
     dispatch(authActions.registerSuccess(responce.data));
-
   } catch (e) {
     dispatch(authActions.registerError(e.message));
 
@@ -78,8 +77,6 @@ const logout = createAsyncThunk('auth/logout', async () => {
     await axios.post('/auth/logout');
     token.unset();
   } catch (e) {
-    dispatch(authActions.logOutError(e.message));
-
     if (e.response.data.code === 204) {
       error({
         text: 'Check connection!',
