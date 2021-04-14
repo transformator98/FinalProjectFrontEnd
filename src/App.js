@@ -93,7 +93,7 @@ export default function App() {
                   exact
                   redirectTo={routes.AUTH_VIEW}
                 >
-                  {/* <MainPageView /> */}
+                  <MainPageView />
                 </PrivateRoute>
                 <PrivateRoute path={routes.TEST_VIEW}>
                   <TestPageView />
@@ -102,7 +102,7 @@ export default function App() {
                   <ResultPageView />
                 </PrivateRoute>
                 <PrivateRoute path={routes.USEFUL_INFO_VIEW}>
-                  {/* <UsefulInfo literature={literature} resources={resources} /> */}
+                  <UsefulInfo literature={literature} resources={resources} />
                 </PrivateRoute>
                 <PublicRoute>
                   <NotFoundView />
@@ -121,8 +121,8 @@ export default function App() {
               draggable
               pauseOnHover
             />
+            <Footer />
           </Container>
-          <Footer />
         </>
       )}
     </>

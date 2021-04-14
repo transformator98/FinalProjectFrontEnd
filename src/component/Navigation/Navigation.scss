@@ -1,15 +1,10 @@
 .site-navigation {
   display: flex;
   justify-content: space-between;
-  margin: 0 auto;
-
-  @media screen and (max-width: 767px) {
-    min-width: 320px;
-  }
+  width: 264px;
 
   @media screen and (min-width: 768px) {
-    min-width: 768px;
-    padding: 0 20px;
+    width: 100%;
   }
 
   @media screen and (min-width: 1280px) {

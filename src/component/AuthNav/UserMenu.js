@@ -1,9 +1,10 @@
-import icon from '../../icon/sign-out.svg';
-import styles from './styles.module.scss';
-import React, { useEffect, useState } from 'react';
-import operations from '../../redux/auth/auth-operations';
 import { useDispatch, useSelector } from 'react-redux';
 import { authSelectors } from '../../redux/auth';
+import React, { useEffect, useState } from 'react';
+import { ReactComponent as SignOutIcon } from '../../icon/sign-out.svg';
+import styles from './styles.module.scss';
+import operations from '../../redux/auth/auth-operations';
+import Button from '../Button';
 
 function AuthHav() {
   const [name, setName] = useState();
@@ -27,16 +28,25 @@ function AuthHav() {
 
   return (
     <div className={styles.authNav}>
-      <img
-        className={styles.avatar}
-        src={avatarUrl}
-        alt="User Avatar"
-        width="30"
-        height="30"
-      />
-      <span className={styles.name}>{name}</span>
+      <div className={styles.authAvatarNameContainer}>
+        <div className={styles.avatarWarpper}>
+          <img
+            className={styles.avatar}
+            src={avatarUrl}
+            alt="avatar"
+            width="30"
+            height="30"
+          />
+        </div>
+        <span className={styles.name}>{name}</span>
+      </div>
 
-      <div onClick={handleLogOut}>
+      <Button
+        children={<SignOutIcon />}
+        className={styles.signOutButton}
+        // onClick={}
+      />
+      {/* <buttom className={styles.signOutIconWrapper} onClick={handleLogOut}>
         <img
           className={styles.signOutIcon}
           src={icon}
@@ -44,7 +54,7 @@ function AuthHav() {
           width="16"
           height="16"
         />
-      </div>
+      </button> */}
     </div>
   );
 }
