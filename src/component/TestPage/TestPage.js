@@ -5,11 +5,13 @@ import { getTests, getResult } from '../../service/serviceTests';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import questionActions from '../../redux/questions/questions-actions';
+import Modal from './Modal/Modal';
 
 // import { getResult } from '../../redux/questions/questions-operations';
 
 export default function TestPage() {
   const [value, setValue] = useState(null);
+  const [modalActive, setModalActive] = useState(false);
 
   const testName = useSelector(state => state.tests.testActive);
   const url = testName === 'technical QA' ? 'technicalQA' : 'testingTheory';
@@ -41,7 +43,7 @@ export default function TestPage() {
     }
     userAnswers.map(question => {
       if (question.questionId === randomQuestions[index].questionId) {
-        setValue(question.answers);
+        setValue(question.userAnswer);
       }
     });
   }, [index, randomQuestions, userAnswers]);
@@ -81,42 +83,27 @@ export default function TestPage() {
     dispatch(questionActions.removeRusult());
   };
 
-  const sendAnswers = () => {
-
-    // dispatch(
-    //   questionActions.addResult(
-    //     randomQuestions[index].questionId,
-    //     value,
-    //     randomQuestions[index].question,
-    //   ),
-    // );
-
-    getResult(url, userAnswers);
+  const openModal = () => {
+    setModalActive(true);
+    dispatch(
+      questionActions.addResult(
+        randomQuestions[index].questionId,
+        value,
+        randomQuestions[index].question,
+      ),
+    );
   };
 
   return (
     <>
       {randomQuestions && (
         <section className={s.testsSection}>
+          {/* <button onClick={() => setModalActive(true)}>Open modal</button> */}
           <div className={s.testHeaderWrapper}>
             <h2 className={s.testName}>{testName}</h2>
-            {index === 11 && value ? (
-
-              <NavLink
-
-                exact
-                to="/result"
-
-                className={s.finishBtn}
-                onClick={sendAnswers}
-              >
-                Finish test
-              </button>
-            ) : (
-              <button to="/" className={s.finishBtn} onClick={finishTest}>
-                Finish test
-              </button>
-            )}
+            <NavLink to="/" className={s.finishBtn} onClick={finishTest}>
+              Finish test
+            </NavLink>
           </div>
           <div className={s.testCard}>
             <p className={s.questionNumber}>
@@ -152,14 +139,19 @@ export default function TestPage() {
               <button className={s.nextBtn_disabled} disabled>
                 Next question
               </button>
-            ) : (
+            ) : index !== 11 ? (
               <button className={s.nextBtn_active} onClick={moveNext}>
                 Next question
+              </button>
+            ) : (
+              <button className={s.nextBtn_active} onClick={openModal}>
+                Send results
               </button>
             )}
           </div>
         </section>
       )}
+      <Modal active={modalActive} setActive={setModalActive} />
     </>
   );
 }
