@@ -8,7 +8,7 @@ import {
   // getResult,
   deleteResult,
 } from '../../redux/questions/questions-operations';
-import getResults from '../../service/serviceTests';
+import getResults from '../../service/serviceResults';
 import routes from '../../routes';
 import { image } from './data/image';
 import { title } from './data/title';
@@ -29,10 +29,10 @@ export default function Results() {
   useEffect(() => {
     async function getUserResult() {
       try {
-        const { data } = await getResults(url);
+        const dataToFind = await getResults(url);
         console.log('url:', url);
-        console.log(data);
-        setResult(data);
+        console.log(dataToFind);
+        setResult(dataToFind);
       } catch (error) {
         console.error(error);
       }
