@@ -55,18 +55,22 @@ export default function AuthForm() {
             <div className={styles.errors}>{errors.password}</div>
           ) : null}
           <div className={styles.buttonWrapper}>
+
             <button
               type="submit"
               className={styles.buttonSignIn + ' ' + styles.active}
             >
               Sign Up
+
             </button>
             <NavLink
               exact
               to={routes.AUTH_SIGNIN}
               className={styles.buttonSignUp}
             >
+
               Login
+
             </NavLink>
           </div>
         </Form>

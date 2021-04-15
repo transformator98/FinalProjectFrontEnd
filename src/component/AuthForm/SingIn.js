@@ -42,9 +42,11 @@ export default function AuthForm() {
             placeholder="E-mail"
             className={styles.input}
           />
+
           {errors.email && touched.email ? (
             <div className={styles.errors}>{errors.email}</div>
           ) : null}
+
           <Field
             type="password"
             name="password"

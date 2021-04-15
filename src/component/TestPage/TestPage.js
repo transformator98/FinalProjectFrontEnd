@@ -82,6 +82,7 @@ export default function TestPage() {
   };
 
   const sendAnswers = () => {
+
     // dispatch(
     //   questionActions.addResult(
     //     randomQuestions[index].questionId,
@@ -100,14 +101,17 @@ export default function TestPage() {
           <div className={s.testHeaderWrapper}>
             <h2 className={s.testName}>{testName}</h2>
             {index === 11 && value ? (
+
               <NavLink
+
                 exact
                 to="/result"
+
                 className={s.finishBtn}
                 onClick={sendAnswers}
               >
                 Finish test
-              </NavLink>
+              </button>
             ) : (
               <button to="/" className={s.finishBtn} onClick={finishTest}>
                 Finish test
