@@ -92,6 +92,7 @@ export default function TestPage() {
         randomQuestions[index].question,
       ),
     );
+
   };
 
   return (
@@ -101,9 +102,11 @@ export default function TestPage() {
           {/* <button onClick={() => setModalActive(true)}>Open modal</button> */}
           <div className={s.testHeaderWrapper}>
             <h2 className={s.testName}>{testName}</h2>
+
             <NavLink to="/" className={s.finishBtn} onClick={finishTest}>
               Finish test
             </NavLink>
+
           </div>
           <div className={s.testCard}>
             <p className={s.questionNumber}>
