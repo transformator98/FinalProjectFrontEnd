@@ -1,18 +1,23 @@
 import s from './Modal.module.scss';
 import { getResult } from '../../../service/serviceTests';
-import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
-export default function Modal({ active, setActive }) {
-  const testName = useSelector(state => state.tests.testActive);
-  // const url = testName === 'technical QA' ? 'technicalQA' : 'testingTheory';
-  const userAnswers = useSelector(state => state.tests.question);
+export default function Modal({
+  active,
+  setActive,
+  testName,
+  userAnswers,
+  token,
+}) {
+  const url = testName === 'technical QA' ? 'technical' : 'theory';
 
   const sendAnswers = () => {
-    if (testName === 'technical QA') {
-      getResult('technicalQA', userAnswers);
-    } else {
-      getResult('testingTheory', userAnswers);
+    if (url === 'technical') {
+      getResult('technical', userAnswers, token);
+    }
+
+    if (url === 'theory') {
+      getResult('theory', userAnswers, token);
     }
   };
 
@@ -28,14 +33,17 @@ export default function Modal({ active, setActive }) {
         className={active ? s.modal_content__active : s.modal_content}
         onClick={e => e.stopPropagation()}
       >
-        <p className={s.modalInfo}>Вы хотите завершить тест?</p>
+        <p className={s.modalInfo}>
+          Congratulations, you have finished the test! We sent report with
+          details to your email. Please press 'ok' to continue
+        </p>
         <div className={s.btnWrapper}>
-          <NavLink to="/result" onClick={sendAnswers} className={s.modalBtn}>
-            Ок
-          </NavLink>
           <button onClick={closeModal} className={s.modalBtn}>
             Cancel
           </button>
+          <NavLink to="/result" onClick={sendAnswers} className={s.modalBtn}>
+            Ок
+          </NavLink>
         </div>
       </div>
     </div>

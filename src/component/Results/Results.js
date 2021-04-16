@@ -8,6 +8,7 @@ import {
   // getResult,
   deleteResult,
 } from '../../redux/questions/questions-operations';
+import questionActions from '../../redux/questions/questions-actions';
 
 import getResults from '../../service/serviceResults';
 
@@ -17,31 +18,46 @@ import { title } from './data/title';
 import { subtitle } from './data/subtitle';
 
 export default function Results() {
-  const [result, setResult] = useState(null);
+  const [result, setResult] = useState({});
+  const [total, setTotal] = useState(0);
+  const [correct, setCorrect] = useState(0);
   const testActive = useSelector(state => state.tests.testActive);
-
-  // STATIC DATA(added for testing)
-  let correct = 6;
-  let total = 12;
+  const token = useSelector(state => state.user.token);
 
   const dispatch = useDispatch();
 
-  const url = testActive === 'technical QA' ? 'technicalQA' : 'testingTheory';
+  const url = testActive === 'technical QA' ? 'technical' : 'theory';
 
   useEffect(() => {
     async function getUserResult() {
       try {
-        const dataToFind = await getResults(url);
-        setResult(dataToFind);
+        if (url === 'technical') {
+          const { data } = await getResults(url, token);
+          setResult(data);
+          setTotal(data.total);
+          setCorrect(data.correctAnswers);
+        }
+        if (url === 'theory') {
+          const { data } = await getResults(url, token);
+          setResult(data);
+          setTotal(data.total);
+          setCorrect(data.correctAnswers);
+        }
       } catch (error) {
         console.error(error);
       }
     }
+
     getUserResult();
-  }, [url]);
+    console.log('useEffect:');
+  }, [token, url]);
 
   const handleTryAgain = () => {
-    dispatch(deleteResult());
+    dispatch(questionActions.removeRusult());
+    dispatch(deleteResult(url, token));
+  };
+  const finishTest = async () => {
+    dispatch(questionActions.removeRusult());
   };
 
   return (
@@ -53,15 +69,22 @@ export default function Results() {
             <h2 className={styles.subtitle}>[ {testActive}_]</h2>
             <hr className={styles.line} />
             <Diagram correct={correct} total={total} />
-            {/* correct={result.correctAnswers} total={result.total} */}
           </div>
           <div className={styles.feedback}>
             <img src={image[correct]} alt="cat" className={styles.image} />
             <h2 className={styles.feedbackTitle}>{title[correct]}</h2>
             <h3 className={styles.feedbackSubtitle}>{subtitle[correct]}</h3>
-            <Link to={routes.TEST_VIEW} className={styles.testLink}>
+            <Link
+              to={routes.TEST_VIEW}
+              className={styles.testLink + ' ' + styles.testLinkMargin}
+            >
               <button className={styles.button} onClick={handleTryAgain}>
                 Try again
+              </button>
+            </Link>
+            <Link to={routes.MAIN_VIEW} className={styles.testLink}>
+              <button className={styles.button} onClick={finishTest}>
+                Finish test
               </button>
             </Link>
           </div>

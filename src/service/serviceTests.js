@@ -12,13 +12,28 @@ export async function getTests(path) {
     return [];
   }
 }
-
-export async function getResult(path, tests) {
+const token = {
+  set(token) {
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  },
+  unset() {
+    axios.defaults.headers.common.Authorization = '';
+  },
+};
+export async function getResult(path, answers, userToken) {
+  token.set(userToken);
+  console.log(userToken);
   try {
-    const response = await axios.post(`/tests/${path}/result`, tests);
+    const url = `/tests/${path}`;
+    console.log(url);
+    console.log(answers);
+    const response = await axios.post(url, answers);
+    console.log(response);
     return response.data;
+    // const response = await axios.post(`/tests/${path}`, tests);
+    // return response.data;
   } catch (error) {
-    console.log('error', { error });
+    console.log(error);
     return [];
   }
 }
