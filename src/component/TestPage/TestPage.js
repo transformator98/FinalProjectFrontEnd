@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import s from './TestPage.module.scss';
 import { Radio } from 'antd';
-import { getTests, getResult } from '../../service/serviceTests';
+import { getTests } from '../../service/serviceTests';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import questionActions from '../../redux/questions/questions-actions';
@@ -14,7 +14,7 @@ export default function TestPage() {
   const [modalActive, setModalActive] = useState(false);
 
   const testName = useSelector(state => state.tests.testActive);
-  const url = testName === 'technical QA' ? 'technicalQA' : 'testingTheory';
+  // const url = testName === 'technical QA' ? 'technicalQA' : 'testingTheory';
 
   const userAnswers = useSelector(state => state.tests.question);
   const randomQuestions = useSelector(state => state.tests.randomQuestions);
@@ -41,7 +41,7 @@ export default function TestPage() {
     if (!randomQuestions) {
       return;
     }
-    userAnswers.map(question => {
+    userAnswers.forEach(question => {
       if (question.questionId === randomQuestions[index].questionId) {
         setValue(question.userAnswer);
       }
@@ -92,7 +92,6 @@ export default function TestPage() {
         randomQuestions[index].question,
       ),
     );
-
   };
 
   return (
@@ -106,7 +105,6 @@ export default function TestPage() {
             <NavLink to="/" className={s.finishBtn} onClick={finishTest}>
               Finish test
             </NavLink>
-
           </div>
           <div className={s.testCard}>
             <p className={s.questionNumber}>
