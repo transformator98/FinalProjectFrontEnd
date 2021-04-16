@@ -49,7 +49,6 @@ export default function Results() {
     }
 
     getUserResult();
-    console.log('useEffect:');
   }, [token, url]);
 
   const handleTryAgain = () => {

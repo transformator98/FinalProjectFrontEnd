@@ -42,7 +42,7 @@ export default function Modal({
             Cancel
           </button>
           <NavLink to="/result" onClick={sendAnswers} className={s.modalBtn}>
-            Ок
+            Ok
           </NavLink>
         </div>
       </div>
