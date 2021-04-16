@@ -5,7 +5,6 @@ import { NavLink } from 'react-router-dom';
 
 export default function Modal({ active, setActive }) {
   const testName = useSelector(state => state.tests.testActive);
-  const url = testName === 'technical QA' ? 'technical' : 'theory';
   const userAnswers = useSelector(state => state.tests.question);
 
   const sendAnswers = () => {
@@ -28,14 +27,17 @@ export default function Modal({ active, setActive }) {
         className={active ? s.modal_content__active : s.modal_content}
         onClick={e => e.stopPropagation()}
       >
-        <p className={s.modalInfo}>Вы хотите завершить тест?</p>
+        <p className={s.modalInfo}>
+          Congratulations, you have finished the test! We sent report with
+          details to your email. Please press 'ok' to continue
+        </p>
         <div className={s.btnWrapper}>
-          <NavLink to="/result" onClick={sendAnswers} className={s.modalBtn}>
-            Ок
-          </NavLink>
           <button onClick={closeModal} className={s.modalBtn}>
             Cancel
           </button>
+          <NavLink to="/result" onClick={sendAnswers} className={s.modalBtn}>
+            Ок
+          </NavLink>
         </div>
       </div>
     </div>

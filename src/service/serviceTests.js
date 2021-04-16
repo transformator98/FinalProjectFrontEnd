@@ -7,7 +7,6 @@ export async function getTests(path) {
   try {
     const { data } = await axios.get(path);
     return data;
-    // console.log(path);
   } catch (error) {
     console.log('error', { error });
     return [];
